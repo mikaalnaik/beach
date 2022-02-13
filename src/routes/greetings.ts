@@ -1,6 +1,7 @@
+import mongo from '../mongo';
+
 const express = require('express');
 const router = express.Router();
-
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {
   console.log('Time: ', Date.now());
@@ -9,8 +10,17 @@ router.use(function timeLog(req, res, next) {
 
 
 // Define the home page route
-router.get('/', function(req, res) {
-  res.send('Howdy Folks');
+router.get('/', (req, res) => {
+  const db = mongo.getDb();
+  console.log('flks');
+  db.collection('records')
+    .find({})
+    .sort({ _id: -1 })
+    .limit(10)
+    .toArray((err, result) => {
+      console.log({ result });
+    });
+
 });
 
 // Define the about route
