@@ -414,3 +414,147 @@ export const justOntarioPlaceReadings: WaterKeeperResponse = {
     },
   ],
 };
+export const bothReadingTypes: WaterKeeperResponse = {
+  records: [
+    {
+      advisory: {
+        issued: false,
+      },
+      organizationName: 'Lake Ontario Waterkeeper (http://www.waterkeeper.ca)',
+      publicationTime: '2021-12-10T15:24:00-05:00',
+      guid: 'ca.swimdrinkfish/ID21-15C-32-TC',
+      location: {
+        coordinate: {
+          latitude: 43.6274,
+          longitude: -79.42097,
+        },
+        name: 'Ontario_Place',
+        id: '15',
+      },
+      sample: {
+        result: 410.6,
+        collectionTime: '2021-12-09T13:45:00-05:00',
+        method: '9223B_colilert',
+        substance: 'total_coliform',
+        location: {
+          coordinate: {
+            latitude: 43.6274,
+            longitude: -79.42097,
+          },
+          name: 'Ontario_Place',
+          id: '15C',
+        },
+        units: 'mpn',
+        type: {
+          kind: 'single',
+        },
+        collector: 'Isabel',
+      },
+    },
+    {
+      advisory: {
+        issued: false,
+      },
+      organizationName: 'Lake Ontario Waterkeeper (http://www.waterkeeper.ca)',
+      publicationTime: '2021-12-10T15:24:00-05:00',
+      guid: 'ca.swimdrinkfish/ID21-15C-32-TC',
+      location: {
+        coordinate: {
+          latitude: 43.6274,
+          longitude: -79.42097,
+        },
+        name: 'Ontario_Place',
+        id: '15',
+      },
+      sample: {
+        result: 410.6,
+        collectionTime: '2021-12-09T13:45:00-05:00',
+        method: '9223B_colilert',
+        substance: 'total_coliform',
+        location: {
+          coordinate: {
+            latitude: 43.6274,
+            longitude: -79.42097,
+          },
+          name: 'Ontario_Place',
+          id: '15C',
+        },
+        units: 'mpn',
+        type: {
+          kind: 'single',
+        },
+        collector: 'Isabel',
+      },
+    },
+    {
+      advisory: {
+        issued: false,
+      },
+      organizationName: 'Lake Ontario Waterkeeper (http://www.waterkeeper.ca)',
+      publicationTime: '2021-08-25T14:15:00-04:00',
+      guid: 'ca.swimdrinkfish/ID21-6A-17-TC',
+      location: {
+        coordinate: {
+          latitude: 43.6388,
+          longitude: -79.384895,
+        },
+        name: 'Marina_4',
+        id: '6',
+      },
+      sample: {
+        result: 1011.2,
+        collectionTime: '2021-08-24T10:37:00-04:00',
+        method: '9223B_colilert',
+        substance: 'total_coliform',
+        location: {
+          coordinate: {
+            latitude: 43.6388,
+            longitude: -79.384895,
+          },
+          name: 'Marina_4',
+          id: '6A',
+        },
+        units: 'mpn',
+        type: {
+          kind: 'single',
+        },
+        collector: 'Cal, Josh, Tania',
+      },
+    },
+    {
+      advisory: {
+        issued: false,
+      },
+      organizationName: 'Lake Ontario Waterkeeper (http://www.waterkeeper.ca)',
+      publicationTime: '2021-06-16T15:50:00-04:00',
+      guid: 'ca.swimdrinkfish/ID21-14B-01-TC',
+      location: {
+        coordinate: {
+          latitude: 43.63571,
+          longitude: -79.39633,
+        },
+        name: 'Bathurst_Quay',
+        id: '14',
+      },
+      sample: {
+        result: 2419.6,
+        collectionTime: '2021-06-15T10:41:00-04:00',
+        method: '9223B_colilert',
+        substance: 'total_coliform',
+        location: {
+          coordinate: {
+            latitude: 43.63571,
+            longitude: -79.39633,
+          },
+          name: 'Bathurst_Quay',
+          id: '14B',
+        },
+        units: 'mpn',
+        type: {
+          kind: 'single',
+        },
+        collector: 'isabel, georgia',
+      },
+    },
+  ],
+};
