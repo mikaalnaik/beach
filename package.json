@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@js-temporal/polyfill": "^0.3.0",
+    "@tensorflow/tfjs-node": "^3.13.0",
     "dayjs": "^1.10.7",
     "dotenv": "^16.0.0",
     "isomorphic-unfetch": "^3.1.0",
