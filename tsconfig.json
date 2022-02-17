@@ -3,10 +3,16 @@
     "module": "commonjs",
     "target": "es6",
     "rootDir": "./",
+    "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
       "fixtures/*": ["../__fixtures__/*"]
     },
-    "esModuleInterop": true
-  }
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
 }
