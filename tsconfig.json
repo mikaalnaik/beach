@@ -3,7 +3,10 @@
     "module": "commonjs",
     "target": "es6",
     "rootDir": "./",
-    "baseUrl": "src",
+    "baseUrl": "./src",
+    "paths": {
+      "fixtures/*": ["../__fixtures__/*"]
+    },
     "esModuleInterop": true
   }
 }

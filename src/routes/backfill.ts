@@ -1,9 +1,10 @@
 import express from 'express';
 import mongo from '../mongo';
-import formatBackfill from '../utils/backfill/backfill-toronto-beach';
+import formatBackfill from '../utils/backfill/toronto-beaches/backfill-toronto-beach';
 import fetch from 'isomorphic-unfetch';
 import { RawTorontoBeachDateResponse } from 'types/toronto-city-response';
 import { getOntarioPlaceReading } from '../utils/backfill/ontario-place';
+import { backfillWeather } from '../utils/backfill/weather';
 
 const router = express.Router();
 //Middle ware that is specific to this router
@@ -23,9 +24,8 @@ router.get('/toronto-beaches', async (req, res) => {
   const rawResponse = await fetch(
     `https://secure.toronto.ca/opendata/adv/beach_results/v1?format=json&startDate=${startDate}&endDate=${endDate}`
   );
-  const response = await rawResponse.json() as RawTorontoBeachDateResponse;
+  const response = await rawResponse.json() as RawTorontoBeachDateResponse[];
   const formattedResponse = formatBackfill(response);
-
 
   const db = mongo.getDb();
 
@@ -40,7 +40,7 @@ router.get('/toronto-beaches', async (req, res) => {
     .collection('records')
     .insertMany(formattedResponse);
 
-  res.status(200).json({ entry });
+  res.status(200).json({ inserted: entry.insertedCount });
 
 });
 
@@ -48,6 +48,11 @@ router.get('/toronto-beaches', async (req, res) => {
 router.get('/ontario-place', async (req, res) => {
   const results = await getOntarioPlaceReading();
   res.status(200).send(results);
+});
+
+router.get('/weather', async (req, res) => {
+  const result = await backfillWeather();
+  res.status(200).send(result);
 });
 
 

@@ -2,5 +2,5 @@
 
 export enum ProviderId {
   CityOfToronto = 1,
-  SwimDrinkFish = 2,
+  WaterKeeper = 2,
 }

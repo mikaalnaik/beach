@@ -5,5 +5,9 @@ const config: Config.InitialOptions = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  moduleNameMapper: {
+    '^fixtures/(.*)$': '<rootDir>/__fixtures__/$1',
+    '^consts/(.*)$': '<rootDir>/src/consts/$1',
+  },
 };
 export default config;
