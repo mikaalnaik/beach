@@ -10,11 +10,11 @@ router.use(function timeLog(req, res, next) {
 
 
 // Define the home page route
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   console.log('mongo');
   const db = mongo.getDb();
   console.log('flks', db);
-  const result = db.collection('records')
+  const result = await db.collection('records')
     .find({})
     .sort({ _id: -1 })
     .limit(10)
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 });
 
 // Define the about route
-router.get('/about', function(req, res) {
+router.get('/about', async (_, res) =>{
   res.send('About us');
 });
 
