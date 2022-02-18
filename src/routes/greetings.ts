@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
   const db = mongo.getDb();
   console.log('flks', db);
   const result = await db.collection('records')
-    .find({})
+    .find({ beachReadings: { $exists: true }})
     .sort({ _id: -1 })
     .limit(10)
     .toArray();
