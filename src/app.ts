@@ -4,6 +4,7 @@ import mongo from './mongo';
 
 const app = express();
 
+app.use('/beaches', require('./routes/beaches'));
 app.use('/greetings', require('./routes/greetings'));
 app.use('/backfill', require('./routes/backfill'));
 app.use('/status', require('./routes/status'));
