@@ -3,8 +3,9 @@
     "module": "commonjs",
     "target": "es6",
     "rootDir": "./",
-    "outDir": "./dist",
+    "outDir": "dist",
     "baseUrl": "./src",
+    "sourceMap": true,
     "paths": {
       "fixtures/*": ["../__fixtures__/*"]
     },
@@ -14,4 +15,5 @@
   "include": [
     "src/**/*.ts"
   ],
+  "exclude": ["node_modules"]
 }
