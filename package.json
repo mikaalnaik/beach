@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "nodemon src/app.ts",
+    "dev": "PORT=3000 nodemon src/app.ts",
     "start": "node dist/src/app.js",
     "test": "jest",
     "postinstall": "tsc",

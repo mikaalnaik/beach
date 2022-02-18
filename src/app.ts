@@ -9,7 +9,7 @@ app.use('/greetings', require('./routes/greetings'));
 app.use('/backfill', require('./routes/backfill'));
 
 mongo.connectToServer(() => {
-  app.listen(PORT, () => {
+  app.listen(process.env.PORT, () => {
     console.log(`Server running on ${PORT}.`);
   });
 });
