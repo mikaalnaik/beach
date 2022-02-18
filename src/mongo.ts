@@ -9,6 +9,10 @@ let dbConnection: Db;
 const mongo = {
   connectToServer: function (callback) {
     client.connect(function (err, db) {
+      if (err) {
+        console.error(err);
+      }
+
       if (err || !db) {
         return callback(err);
       }
