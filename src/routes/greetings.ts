@@ -11,8 +11,9 @@ router.use(function timeLog(req, res, next) {
 
 // Define the home page route
 router.get('/', (req, res) => {
+  console.log('mongo');
   const db = mongo.getDb();
-  console.log('flks');
+  console.log('flks', db);
   db.collection('records')
     .find({})
     .sort({ _id: -1 })
