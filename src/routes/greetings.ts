@@ -14,14 +14,13 @@ router.get('/', (req, res) => {
   console.log('mongo');
   const db = mongo.getDb();
   console.log('flks', db);
-  db.collection('records')
+  const result = db.collection('records')
     .find({})
     .sort({ _id: -1 })
     .limit(10)
-    .toArray((err, result) => {
-      console.log({ result });
-    });
+    .toArray();
 
+  res.send(result);
 });
 
 // Define the about route
