@@ -12,7 +12,7 @@ describe('Toronto Import', () => {
     });
 
     const got = await getLatestTorontoReadings();
-    const want = [];
+    const want = {};
     expect(got).toEqual(want);
   });
 });

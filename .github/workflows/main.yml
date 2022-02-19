@@ -14,10 +14,8 @@ jobs:
         with:
           node-version: '16.13.0'
       - run : yarn
-
+      - name: Unit Tests
       - run: yarn test
-
-
 
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
