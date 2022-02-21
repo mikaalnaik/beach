@@ -1,4 +1,3 @@
-import { Temporal } from '@js-temporal/polyfill';
 import { BeachIds } from 'consts/beachIds';
 
 export type RawTorontoBeachResponsePoint = {
@@ -17,11 +16,20 @@ export type RawTorontoBeachDateResponse = {
 export type TBeachReading = {
   advisory: string;
   beachId: BeachIds;
-  beachName: string; // TODO: improve this type
-  collectionDate: Temporal.PlainDate;
+  beachName: keyof BeachIds; // TODO: improve this type
+  collectionDate: string;
   eColi: number | null;
   position: { latidude: number; longitude: number };
   provider: 'City of Toronto';
   providerId: 1;
   statusFlag: string;
 };
+
+
+export type TFormattedBeachReadings = {
+  collectionDate: string;
+  beachReadings: TBeachReadingsOnDay;
+};
+
+
+export type TBeachReadingsOnDay = Record<BeachIds, TBeachReading>;

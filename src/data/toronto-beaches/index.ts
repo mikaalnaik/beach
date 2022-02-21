@@ -1,5 +1,5 @@
 import { RawTorontoBeachDateResponse } from 'types/toronto-city-response';
-import formatBackfill from 'utils/backfill/toronto-beaches/backfill-toronto-beach';
+import formatBackfill from '../../utils/backfill/toronto-beaches/backfill-toronto-beach';
 import fetch from 'isomorphic-unfetch';
 
 export const getTorontoReadings = async (startDate: string, endDate: string) => {
@@ -7,7 +7,6 @@ export const getTorontoReadings = async (startDate: string, endDate: string) => 
     `https://secure.toronto.ca/opendata/adv/beach_results/v1?format=json&startDate=${startDate}&endDate=${endDate}`
   );
   const response = await rawResponse.json() as RawTorontoBeachDateResponse[];
-  console.log('response', response);
   if (response) {
     return formatBackfill(response);
   } else {

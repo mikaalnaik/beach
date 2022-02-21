@@ -1,9 +1,10 @@
-import { Temporal } from '@js-temporal/polyfill';
+import dayjs from 'dayjs';
 import { BeachPositions } from '../../../consts/beachIds';
 import { ProviderId } from '../../../consts/providerIds';
 import {
   RawTorontoBeachDateResponse,
   RawTorontoBeachResponsePoint,
+  TFormattedBeachReadings,
 } from '../../../types/toronto-city-response';
 
 type formattedBackfillResponse = {
@@ -23,12 +24,12 @@ type FormattedBeachReading = {
 
 
 export default function formatBackfill(d: RawTorontoBeachDateResponse[]) {
-  return d.reduce((accum: { collectionDate: Date; beachReadings: formattedBackfillResponse}[], day) => {
+  const test = d.reduce((accum: TFormattedBeachReadings[], day) => {
     if (day.data) {
       return [
         ...accum,
         {
-          collectionDate: Temporal.PlainDate.from(day.CollectionDate).toString(),
+          collectionDate: dayjs(day.CollectionDate).format('YYYY-MM-DD'),
           beachReadings: formatReadingsForDay(day.data, day.CollectionDate),
         },
       ];
@@ -36,6 +37,7 @@ export default function formatBackfill(d: RawTorontoBeachDateResponse[]) {
       return accum;
     }
   }, []);
+  return test;
 }
 
 const addAdditionalDataToTorontoResponse = (
