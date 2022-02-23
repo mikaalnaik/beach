@@ -1,12 +1,12 @@
 {
   "name": "beach-backend",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "dist/app.js",
   "author": "Mikaal Naik",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "PORT=3000 ts-node-dev --respawn --transpile-only src/app.ts",
+    "dev": "PORT=3000 NODE_PATH=./src nodemon",
     "start": "node dist/src/app.js",
     "test": "jest",
     "postinstall": "tsc",

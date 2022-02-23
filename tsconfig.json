@@ -2,18 +2,20 @@
   "compilerOptions": {
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es6",
-    "outDir": "./dist",
+    "target": "esnext",
+    "outDir": "dist",
     "baseUrl": "./src",
     "sourceMap": true,
+    "esModuleInterop": true,
     "paths": {
       "fixtures/*": ["../__fixtures__/*"]
     },
-    "esModuleInterop": true,
-    "skipLibCheck": true
   },
   "include": [
-    "src/**/*.ts"
+    "src"
   ],
-  "exclude": ["node_modules", "../__fixtures__"]
+  "exclude": ["node_modules", "**/__fixtures__/*"],
+  "ignore": [
+    "node_modules",
+  ]
 }

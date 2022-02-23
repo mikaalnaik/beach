@@ -1,10 +1,11 @@
 import fetch from 'isomorphic-unfetch';
-import { TRawStation, TRawWeatherResponse, TWeatherPoint } from 'types/environment-canada';
-import { formatDailyDataPoint } from './format-daily-data-point';
-import { formatStationData } from './format-station-data';
+import { formatDailyDataPoint } from 'utils/backfill/weather/format-daily-data-point';
+import { formatStationData } from 'utils/backfill/weather/format-station-data';
 import mongo from '../../../mongo';
 import dayjs from 'dayjs';
-import { getArrayOfYearsSince2017 } from '../get-array-of-years';
+import { getArrayOfYearsSince2017 } from 'utils/backfill/get-array-of-years';
+
+import type { TRawStation, TRawWeatherResponse, TWeatherPoint } from 'types/environment-canada';
 
 const parseString = require('xml2js').parseString;
 
