@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "esnext",
+    "target": "es6",
     "outDir": "dist",
     "baseUrl": "./src",
     "sourceMap": true,
@@ -17,5 +17,5 @@
   "exclude": ["node_modules", "**/__fixtures__/*"],
   "ignore": [
     "node_modules",
-  ]
+  ],
 }

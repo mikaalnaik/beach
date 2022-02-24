@@ -25,7 +25,7 @@
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-non-null-assertion": "off", // TODO: Remove this once everything is properly typed without "!" fields
-    "@typescript-eslint/no-explicit-any": "off", // TODO: Remove this once everything is properly typed without ":any" fields
+    "@typescript-eslint/no-explicit-any": "warn", // TODO: Remove this once everything is properly typed without ":any" fields
     "@typescript-eslint/member-delimiter-style": ["error"]
   }
 }

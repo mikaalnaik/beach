@@ -5,7 +5,7 @@ const config: Config.InitialOptions = {
   moduleDirectories: ['node_modules', 'src'],
   roots: ['<rootDir>/src'],
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.(ts|tsx)?$': 'ts-jest',
   },
   moduleNameMapper: {
     '^fixtures/(.*)$': '<rootDir>/__fixtures__/$1',
