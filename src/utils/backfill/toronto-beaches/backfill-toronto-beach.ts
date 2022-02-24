@@ -4,6 +4,7 @@ import { ProviderId } from '../../../consts/providerIds';
 import {
   RawTorontoBeachDateResponse,
   RawTorontoBeachResponsePoint,
+  TBeachReadingsOnDay,
   TFormattedBeachReadings,
 } from '../../../types/toronto-city-response';
 
@@ -23,10 +24,10 @@ type FormattedBeachReading = {
 };
 
 
-export default function formatBackfill(d: RawTorontoBeachDateResponse[]) {
+export default function formatBackfill(d: RawTorontoBeachDateResponse[]): TFormattedBeachReadings[] {
   const test = d.reduce((accum: TFormattedBeachReadings[], day) => {
     if (day.data) {
-      return [
+      accum = [
         ...accum,
         {
           collectionDate: dayjs(day.CollectionDate).format('YYYY-MM-DD'),
@@ -36,6 +37,7 @@ export default function formatBackfill(d: RawTorontoBeachDateResponse[]) {
     } else {
       return accum;
     }
+    return accum;
   }, []);
   return test;
 }
@@ -57,12 +59,12 @@ const formatReadingsForDay = (
   readings: RawTorontoBeachResponsePoint[],
   date: string
 ) => {
-  const formattedReadings = readings.reduce((accum, r) => {
+  const formattedReadings = readings.reduce<TBeachReadingsOnDay>((accum, r) => {
     return {
       ...accum,
       [r.beachId]: addAdditionalDataToTorontoResponse(r, date),
     };
-  }, {});
+  }, {} as TBeachReadingsOnDay);
 
   return formattedReadings;
 };
