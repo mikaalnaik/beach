@@ -12,10 +12,11 @@
     },
   },
   "include": [
-    "src"
+    "src/**/*"
   ],
-  "exclude": ["node_modules", "**/__fixtures__/*"],
+  "exclude": ["node_modules", "__fixtures__"],
   "ignore": [
     "node_modules",
+    "**/__fixtures__"
   ],
 }

@@ -1,13 +1,13 @@
+import { ProviderId } from 'consts/providerIds';
+
 export type WaterKeeperReponsePoint = {
   advisory: {
     issued: boolean;
   };
   organizationName: 'Lake Ontario Waterkeeper (http://www.waterkeeper.ca)';
-  references?: [
-    {
+  references?: {
       guid: string;
-    }
-  ];
+  }[];
   publicationTime: string;
   guid: string;
   location: {
@@ -34,46 +34,52 @@ export type WaterKeeperReponsePoint = {
     units: 'mpn';
     type: {
       kind: string;
+      variant?: string;
     };
     collector: string;
+  };
+  revokes?: {
+    guid: string;
   };
 };
 
 
 export type WaterKeeperResponse = {
+  $schema?: string;
   records: WaterKeeperReponsePoint[];
+  documentTime?: string;
 };
 
 export type WaterKepperReading = {
-  advisory: { issued: false };
+  advisory: { issued: boolean };
   organizationName: 'Lake Ontario Waterkeeper (http://www.waterkeeper.ca)';
-  publicationTime: '2021-12-10T15:24:00-05:00';
-  guid: 'ca.swimdrinkfish/ID21-15C-32-TC';
-  ecoli: 410.6;
-  substance: 'total_coliform';
+  publicationTime: string;
+  guid: string;
+  ecoli: number;
+  substance: string;
   sample: {
-    result: 410.6;
-    collectionTime: '2021-12-09T13:45:00-05:00';
-    method: '9223B_colilert';
-    substance: 'total_coliform';
+    result: number;
+    collectionTime: string;
+    method: string;
+    substance: string;
     location: {
       coordinate: {
-        latitude: 43.6274;
-        longitude: -79.42097;
+        latitude: number;
+        longitude: number;
       };
-      name: 'Ontario_Place';
-      id: '15C';
+      name: string;
+      id: string;
     };
     units: 'mpn';
     type: {
-      kind: 'single';
+      kind: string;
     };
-    collector: 'Isabel';
+    collector: string;
   };
-  beachId: '15';
+  beachId: string;
   beachName: 'Ontario Place West Beach';
-  collectionDate: '2021-12-09T13:45:00-05:00';
-  providerId: 2;
-  provider: 'Lake Ontario WaterKeeper';
-  position: { latitude: 43.6275; longitude: -79.42141 };
+  collectionDate: string;
+  providerId: ProviderId;
+  provider: string;
+  position: { latitude: number; longitude: number };
 };

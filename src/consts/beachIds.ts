@@ -10,6 +10,7 @@ export enum BeachIds {
   KewBalmyBeach = 9,
   BluffersBeachPark = 10,
   RougeBeach = 11,
+  OntarioPlace = 15,
 }
 
 export const BeachNames = {

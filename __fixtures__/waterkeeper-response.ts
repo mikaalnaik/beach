@@ -503,7 +503,7 @@ export const bothReadingTypes: WaterKeeperResponse = {
       },
       sample: {
         result: 1011.2,
-        collectionTime: '2021-08-24T10:37:00-04:00',
+        collectionTime: '2018-08-24T10:37:00-04:00',
         method: '9223B_colilert',
         substance: 'total_coliform',
         location: {

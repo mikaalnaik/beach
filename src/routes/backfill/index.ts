@@ -1,7 +1,7 @@
 import express from 'express';
 import mongo from '../../mongo';
 import { backfillWeather } from 'utils/backfill/weather';
-import { getOntarioPlaceReading } from 'utils/backfill/ontario-place';
+import { getOntarioPlaceReading, insertOntarioPlaceReadings } from 'utils/backfill/ontario-place';
 import { getTorontoReadings } from 'data/toronto-beaches';
 
 const router = express.Router();
@@ -41,7 +41,9 @@ router.get('/toronto-beaches', async (req, res) => {
 // Define the about route
 router.get('/ontario-place', async (req, res) => {
   const results = await getOntarioPlaceReading();
-  res.status(200).send(results);
+  const test = await insertOntarioPlaceReadings(results);
+  console.log('test', test);
+  res.status(200).send(test);
 });
 
 router.get('/weather', async (req, res) => {
