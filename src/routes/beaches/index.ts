@@ -7,11 +7,17 @@ const router = express.Router();
 
 router.get('/latest', async (req, res) => {
   const db = mongo.getDb();
-  const result = await db.collection('records')
+  const ontarioPlaceResult = await db.collection('records')
     .find({
       [`beachReadings.${BeachIds.OntarioPlace}`]: {
         $exists: true,
       },
+    })
+    .sort({ collectionDate: -1 })
+    .limit(1)
+    .toArray();
+  const cityOfTorontoResult = await db.collection('records')
+    .find({
       [`beachReadings.${BeachIds.HanlansPointBeach}`]: { // this could be any Toronto beach
         $exists: true,
       },
@@ -19,7 +25,7 @@ router.get('/latest', async (req, res) => {
     .sort({ collectionDate: -1 })
     .limit(1)
     .toArray();
-  res.send(result);
+  res.send({ ontarioPlaceResult, cityOfTorontoResult });
 });
 
 
