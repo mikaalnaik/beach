@@ -6,14 +6,17 @@ import dayjs from 'dayjs';
 import { getArrayOfYearsSince2017 } from 'utils/backfill/get-array-of-years';
 
 import type { TRawStation, TRawWeatherResponse, TWeatherPoint } from 'types/environment-canada';
+import { getWeather } from './get-weather';
 
 const parseString = require('xml2js').parseString;
 
 export const backfillWeather = async () => {
   const years = getArrayOfYearsSince2017();
-  const inserts = years.map(async year => {
-    const weather = await getWeather(year);
+  const inserts = years.map(async yearData => {
+    const weather = await getWeather(yearData.year, yearData.stationID);
     const result = await parseWeatherXML(weather);
+    console.log('yearData', yearData);
+    console.log('result', result);
     const rawStationData: TRawStation = result.climatedata.stationinformation[0];
     const station = formatStationData(rawStationData);
     return result.climatedata.stationdata.map(async reading => {
@@ -25,7 +28,7 @@ export const backfillWeather = async () => {
   return results;
 };
 
-const parseWeatherXML = (weather: string): Promise<TRawWeatherResponse> => {
+export const parseWeatherXML = (weather: string): Promise<TRawWeatherResponse> => {
   return new Promise((resolve, reject) => {
     parseString(weather, (err, result: TRawWeatherResponse) => {
       if (err) {
@@ -54,9 +57,4 @@ const insertWeatherIntoMongo = async (weather: TWeatherPoint, date: string) => {
     .then(result => result)
     .catch(console.error);
   return result;
-};
-
-const getWeather = async (year: number) => {
-  const weatherResponse = await fetch(`https://climate.weather.gc.ca/climate_data/bulk_data_e.html?format=xml&stationID=51459&Year=${year}&time=&timeframe=2`);
-  return await weatherResponse.text();
 };

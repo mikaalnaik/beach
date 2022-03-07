@@ -1,6 +1,11 @@
 
 
 
+## TODO
+
+Store all imports in a raw state on import.
+
+
 
 ## Current state
 
@@ -11,9 +16,12 @@ Beach data, then weather data or other beach data soruces.
 
 ## Weather
 
-Stitch together Toronto INTL A and Toronto Lest B Pearson Int'l A data.
-One covers up to 2013, and the other from 2013 to the present and rolling forward.
+Stitch together  and Toronto Lest B Pearson Int'l A (Station ID 5097) data.
 
+Toronto INTL A (StationID 51459) covers from June 13th, 2013 to the present.
+TORONTO LESTER B. PEARSON INT'L A (StationID 5097) cover from the 1930s (way back) to June 13th, 2013
+
+Rain is measured in millimetres.
 
 # Misc
 
