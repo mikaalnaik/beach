@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-unfetch';
 import { formatDailyDataPoint } from 'utils/backfill/weather/format-daily-data-point';
 import { formatStationData } from 'utils/backfill/weather/format-station-data';
 import mongo from '../../../mongo';
