@@ -3,12 +3,6 @@ import dayjs from 'dayjs';
 
 
 export const formatDailyDataPoint = (reading: TRawWeatherDataPoint, station: TStation): TWeatherPoint => {
-  console.log('reading', reading);
-  console.log({
-    year: reading.$.year,
-    month: reading.$.month,
-    day: reading.$.day,
-  });
   return {
     date: dayjs(`${reading.$.year}-${reading.$.month}-${reading.$.day}`, 'YYYY-MM-DD').toString(),
     station: station,

@@ -1,14 +1,12 @@
-import { Temporal } from '@js-temporal/polyfill';
-
 export type TRawStation = {
-  name: [string];
-  province: [string];
-  latitude: [string];
-  longitude: [string];
-  elevation: [string];
-  climate_identifier: [string];
-  wmo_identifier: [string];
-  tc_identifier: [string];
+  name: string[];
+  province: string[];
+  latitude: string[];
+  longitude: string[];
+  elevation: string[];
+  climate_identifier: string[];
+  wmo_identifier: string[];
+  tc_identifier: string[];
 };
 
 export type TStation = {
