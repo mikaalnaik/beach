@@ -19,44 +19,43 @@ export type TStation = {
 
 export type TRawWeatherDataPoint = {
   $: {
-    day: '28';
-    month: '12';
-    year: '2017';
+    day: string;
+    month: string;
+    year: string;
    };
-  maxtemp: [
-    {
-      _: '-12.5';
+  maxtemp: {
+      _?: string; // number as a string
       $: {
         description: 'Maximum Temperature';
         units: '°C';
+        flag?: 'M';
       };
-     }
-  ];
+     }[];
   mintemp: [
-    { _: '-22.5'; $: { description: 'Minimum Temperature'; units: '°C' } }
+    { _?:string; $: { description: 'Minimum Temperature'; flag?: 'E' | 'M'; units: '°C' } }
   ];
   meantemp: [
-    { _: '-17.5'; $: { description: 'Mean Temperature'; units: '°C' } }
+    { _?: string; $: { description: 'Mean Temperature'; flag?: 'M'; units: '°C' } }
   ];
   heatdegdays: [
-    { _: '35.5'; $: { description: 'Heating Degree Days'; units: '°C' } }
+    { _?: string; $: { description: 'Heating Degree Days'; flag?: 'M'; units: '°C' } }
   ];
   cooldegdays: [
-    { _: '0.0'; $: { description: 'Cooling Degree Days'; units: '°C' } }
+    { _?: string; $: { description: 'Cooling Degree Days'; flag?: 'M'; units: '°C' } }
   ];
-  totalrain: [{ _: '0.0'; $: { description: 'Total Rain'; units: 'mm' } }];
-  totalsnow: [{ _: '0.0'; $: { description: 'Total Snow'; units: 'cm' } }];
+  totalrain: [{ _?: string; $: { description: 'Total Rain'; units: 'mm' } }];
+  totalsnow: [{ _?: string; $: { description: 'Total Snow'; units: 'cm' } }];
   totalprecipitation: [
-    { _: '0.0'; $: { description: 'Total Precipitation'; units: 'mm' } }
+    { _?: string; $: { description: 'Total Precipitation'; units: 'mm' } }
   ];
   snowonground: [
-    { _: '12'; $: { description: 'Snow on Ground'; units: 'cm' } }
+    { _?: string; $: { description: 'Snow on Ground'; units: 'cm' } }
   ];
   dirofmaxgust: [
-    { $: { description: 'Direction of Maximum Gust'; units: '10s Deg' } }
+    { _?: string; $: { description: 'Direction of Maximum Gust'; units: '10s Deg' } }
   ];
   speedofmaxgust: [
-    { _: '<31'; $: { description: 'Speed of Maximum Gust'; units: 'km/h' } }
+    { _?: string; $: { description: 'Speed of Maximum Gust'; units: 'km/h' } }
   ];
 };
 

@@ -4,27 +4,41 @@ import mongo from '../../../mongo';
 import dayjs from 'dayjs';
 import { getArrayOfYearsSince2017 } from 'utils/backfill/get-array-of-years';
 
-import type { TRawStation, TRawWeatherResponse, TWeatherPoint } from 'types/environment-canada';
+import type { TRawWeatherResponse, TWeatherPoint } from 'types/environment-canada';
 import { getWeather } from '../../weather/get-weather';
+import { WeatherStations } from 'consts/weatherStations';
+import { isValidWeatherDataPoint } from 'utils/weather/weather-data-validator';
 
 const parseString = require('xml2js').parseString;
 
 export const backfillWeather = async () => {
   const years = getArrayOfYearsSince2017();
   const inserts = years.map(async yearData => {
-    const weather = await getWeather(yearData.year, yearData.stationID);
-    const result = await parseWeatherXML(weather);
-    console.log('yearData', yearData);
-    console.log('result', result);
-    const rawStationData: TRawStation = result.climatedata.stationinformation[0];
-    const station = formatStationData(rawStationData);
-    return result.climatedata.stationdata.map(async reading => {
-      const formattedReading = formatDailyDataPoint(reading, station);
-      return await insertWeatherIntoMongo(formattedReading, formattedReading.date);
-    });
+    return getWeatherForYearAtStation(yearData.year, yearData.stationID);
   });
   const results = await Promise.all(inserts);
   return results;
+};
+
+
+const getWeatherForYearAtStation = async (year: number, stationID: WeatherStations) => {
+  const weather = await getParsedWeather(year, stationID);
+  const station = formatStationData(weather);
+  const stationData = weather.climatedata.stationdata;
+  return stationData.map(async reading => {
+    if (isValidWeatherDataPoint(reading)) {
+      const formattedReading = formatDailyDataPoint(reading, station);
+      return await insertWeatherIntoMongo(formattedReading, formattedReading.date);
+    }
+  });
+};
+
+
+
+export const getParsedWeather = async (year: number, stationID: WeatherStations) => {
+  const xmlWeather = await getWeather(year, stationID);
+  const weather = await parseWeatherXML(xmlWeather);
+  return weather;
 };
 
 export const parseWeatherXML = (weather: string): Promise<TRawWeatherResponse> => {
@@ -39,7 +53,7 @@ export const parseWeatherXML = (weather: string): Promise<TRawWeatherResponse> =
   });
 };
 
-const insertWeatherIntoMongo = async (weather: TWeatherPoint, date: string) => {
+export const insertWeatherIntoMongo = async (weather: TWeatherPoint, date: string) => {
   const db = mongo.getDb();
 
   const filter = { collectionDate: dayjs(date).format('YYYY-MM-DD').toString() };

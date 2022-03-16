@@ -1,11 +1,10 @@
-import { TRawStation } from 'types/environment-canada';
-import { weatherFixture } from '../../../../__fixtures__/weather-response';
+import { weatherFixture } from '../../../../__fixtures__/weather/weather-response';
 import { formatStationData } from '.';
+import { TRawWeatherResponse } from 'types/environment-canada';
 
 describe('Format Weather Stations', () => {
   it('produces the correct date format', () => {
-    const rawStationData: TRawStation = weatherFixture.climatedata.stationinformation[0];
-    const station = formatStationData(rawStationData);
+    const station = formatStationData(weatherFixture as unknown as TRawWeatherResponse);
     const want = {
       climate_identifier: '6158731',
       latitude: 43.68,

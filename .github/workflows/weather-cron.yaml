@@ -1,0 +1,13 @@
+name: Weather Cron Job
+on:
+  schedule:
+    - cron: '0 */5 * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call our API route
+        run: |
+          curl --request POST \
+          --url 'https://mysite.vercel.app/api/myjsfile' \
+          --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'

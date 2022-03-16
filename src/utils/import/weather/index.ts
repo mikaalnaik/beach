@@ -1,37 +1,20 @@
-import { BeachIds } from 'consts/beachIds';
 import { WeatherStations } from 'consts/weatherStations';
 import dayjs from 'dayjs';
-import { parseWeatherXML } from 'utils/backfill/weather';
-import { getWeather } from 'utils/weather/get-weather';
-import mongo from '../../../mongo';
-
-
+import { getParsedWeather, insertWeatherIntoMongo } from 'utils/backfill/weather';
+import { formatDailyDataPoint } from 'utils/weather/format-daily-data-point';
+import { formatStationData } from 'utils/weather/format-station-data';
+import { isValidWeatherDataPoint } from 'utils/weather/weather-data-validator';
 
 export const importWeather = async () => {
-  const month = dayjs().month() + 1;
   const year = dayjs().year();
+  const weather = await getParsedWeather(year, WeatherStations.PostJune2013);
+  const station = formatStationData(weather);
+  const stationData = weather.climatedata.stationdata;
 
-  const rawWeather = await getWeather(year, WeatherStations.PostJune2013);
-  const weather = await parseWeatherXML(rawWeather);
-
-  console.log('weather', weather);
-  const latestWeather = await getLatestWeather();
-  return weather;
-
-};
-
-
-const getLatestWeather = async () => {
-
-  const db = mongo.getDb();
-  const latestWeather = await db.collection('records')
-    .find({
-      ['weather']: { // this could be any Toronto beach
-        $exists: true,
-      },
-    })
-    .sort({ collectionDate: -1 })
-    .limit(1)
-    .toArray();
-  return latestWeather;
+  return stationData.map(async reading => {
+    if (isValidWeatherDataPoint(reading)) {
+      const formattedReading = formatDailyDataPoint(reading, station);
+      return await insertWeatherIntoMongo(formattedReading, formattedReading.date);
+    }
+  });
 };
