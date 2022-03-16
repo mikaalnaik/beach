@@ -4,7 +4,7 @@
     "moduleResolution": "node",
     "target": "es6",
     "outDir": "dist",
-    "baseUrl": "./src",
+    "baseUrl": "src",
     "sourceMap": true,
     "esModuleInterop": true,
     "paths": {
@@ -14,9 +14,8 @@
   "include": [
     "src/**/*"
   ],
-  "exclude": ["node_modules", "__fixtures__"],
+  "exclude": ["node_modules", "*/__fixtures__"],
   "ignore": [
     "node_modules",
-    "**/__fixtures__"
   ],
 }

@@ -9,7 +9,7 @@
     "dev": "PORT=3000 NODE_PATH=./src  ts-node-dev --respawn --transpile-only src/index.ts",
     "start": "node dist/src/app.js",
     "test": "jest",
-    "postinstall": "tsc --project tsconfig.json",
+    "postinstall": "tsc -p .",
     "test:dev": "jest --watch"
   },
   "engines": {
