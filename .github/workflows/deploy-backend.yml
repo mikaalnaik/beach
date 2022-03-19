@@ -26,4 +26,5 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "beachbackend" #Must be unique in Heroku
           heroku_email: "matthewnaik@gmail.com"
-          appdir: "apps/backend"
+          healthcheck: ""https://beachbackend.herokuapp.com/health""
+          appdir: "./apps/backend"
