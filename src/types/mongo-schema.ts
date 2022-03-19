@@ -1,4 +1,4 @@
-import { BeachIds } from 'consts/beachIds';
+import { BeachIds } from '../consts/beachIds';
 import { ObjectId } from 'mongodb';
 import { TWeatherPoint } from './environment-canada';
 import { TBeachReading } from './toronto-city-response';

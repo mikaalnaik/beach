@@ -1,6 +1,6 @@
-import { BeachIds } from 'consts/beachIds';
+import { BeachIds } from '../../consts/beachIds';
 import express, { Request } from 'express';
-import { getLatestReadingForSpecificBeach } from 'utils/import/ontario-place';
+import { getLatestReadingForSpecificBeach } from '../../utils/import/ontario-place';
 import mongo from '../../mongo';
 
 const router = express.Router();

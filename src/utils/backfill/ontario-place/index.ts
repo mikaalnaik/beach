@@ -1,10 +1,10 @@
 import fetch from 'isomorphic-unfetch';
-import { WaterKeeperResponse, WaterKepperReading } from 'types/waterkeeper-response';
+import { WaterKeeperResponse, WaterKepperReading } from '../../../types/waterkeeper-response';
 import { filterOntarioPlaceReadings } from './filter-ontario-place-readings';
 import { formatOntarioPlaceReading } from './format-response';
 import mongo from '../../../mongo';
 import dayjs from 'dayjs';
-import { BeachIds } from 'consts/beachIds';
+import { BeachIds } from '../../../consts/beachIds';
 
 export const getOntarioPlaceReading = async () => {
   const swimGuideData: WaterKeeperResponse = await fetch('http://translate.theswimguide.org/toronto/json').then(res => res.json());

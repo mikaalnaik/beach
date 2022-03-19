@@ -1,4 +1,4 @@
-import { WeatherStations } from 'consts/weatherStations';
+import { WeatherStations } from '../../consts/weatherStations';
 
 /**
  *

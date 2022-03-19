@@ -1,5 +1,5 @@
 
-import app from 'app';
+import app from './app';
 import mongo from './mongo';
 
 mongo.connectToServer(() => {

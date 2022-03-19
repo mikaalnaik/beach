@@ -1,6 +1,4 @@
-import { BeachIds } from 'consts/beachIds';
-import express, { Request } from 'express';
-import { getLatestReadingForSpecificBeach } from 'utils/import/ontario-place';
+import express from 'express';
 import mongo from '../../mongo';
 
 const router = express.Router();
