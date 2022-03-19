@@ -13,7 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           node-version: '16.13.0'
       - name: Install Dependencies
@@ -24,9 +23,10 @@ jobs:
         working-directory: ./apps/backend
         run: |
          yarn test
+      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "beachbackend" #Must be unique in Heroku
           heroku_email: "matthewnaik@gmail.com"
-          healthcheck: ""https://beachbackend.herokuapp.com/health""
+          healthcheck: "https://beachbackend.herokuapp.com/health"
           appdir: "./apps/backend"
