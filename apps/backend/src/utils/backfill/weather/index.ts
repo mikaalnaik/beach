@@ -1,13 +1,13 @@
-import { formatDailyDataPoint } from '../../../utils/weather/format-daily-data-point';
-import { formatStationData } from '../../../utils/weather/format-station-data';
+import { formatDailyDataPoint } from '../../weather/format-daily-data-point';
+import { formatStationData } from '../../weather/format-station-data';
 import mongo from '../../../mongo';
 import dayjs from 'dayjs';
-import { getArrayOfYearsSince2017 } from '../../../utils/backfill/get-array-of-years';
+import { getArrayOfYearsSince2017 } from '../get-array-of-years';
 
 import type { TRawWeatherResponse, TWeatherPoint } from 'types/environment-canada';
 import { getWeather } from '../../weather/get-weather';
 import { WeatherStations } from '../../../consts/weatherStations';
-import { isValidWeatherDataPoint } from '../../../utils/weather/weather-data-validator';
+import { isValidWeatherDataPoint } from '../../weather/weather-data-validator';
 
 const parseString = require('xml2js').parseString;
 
