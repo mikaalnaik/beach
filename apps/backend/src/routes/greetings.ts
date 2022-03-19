@@ -1,10 +1,9 @@
 import express from 'express';
-const path = require('path');
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/index.html'));
+  res.send('Checkout the code at https://github.com/mikaalnaik/beach-backend');
 });
 
 
