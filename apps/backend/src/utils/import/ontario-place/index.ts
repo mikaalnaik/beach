@@ -1,6 +1,6 @@
 import { WaterKepperReading } from 'types/waterkeeper-response';
 import { BeachIds } from '../../../consts/beachIds';
-import { getOntarioPlaceReading, insertOntarioPlaceReadings } from '../../../utils/backfill/ontario-place';
+import { getOntarioPlaceReading, insertOntarioPlaceReadings } from '../../backfill/ontario-place';
 import mongo from '../../../mongo';
 import { filterOutOntarioPlaceReadingsByDate } from './filter-out-ontario-place-readings-by-date';
 
