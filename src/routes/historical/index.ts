@@ -2,6 +2,7 @@ import { BeachIds } from '../../consts/beachIds';
 import express, { Request } from 'express';
 import { getLatestReadingForSpecificBeach } from '../../utils/import/ontario-place';
 import mongo from '../../mongo';
+import { getLatestEntry } from '../../utils/db/get-latest-entry';
 
 const router = express.Router();
 
@@ -24,23 +25,8 @@ router.get('/:id', async (req, res) => {
 });
 
 router.get('/all-time', async (req, res) => {
-  const db = mongo.getDb();
-  const ontarioPlaceResult = await db.collection('records')
-    .find({
-      [`beachReadings.${BeachIds.OntarioPlace}`]: {
-        $exists: true,
-      },
-    })
-    .sort({ collectionDate: -1 })
-    .toArray();
-  const cityOfTorontoResult = await db.collection('records')
-    .find({
-      [`beachReadings.${BeachIds.HanlansPointBeach}`]: { // this could be any Toronto beach
-        $exists: true,
-      },
-    })
-    .sort({ collectionDate: -1 })
-    .toArray();
+  const ontarioPlaceResult = await getLatestEntry(BeachIds.OntarioPlace);
+  const cityOfTorontoResult = await getLatestEntry(BeachIds.HanlansPointBeach);
   res.send({ ontarioPlaceResult, cityOfTorontoResult });
 });
 

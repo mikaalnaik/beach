@@ -23,10 +23,5 @@ router.get('/weather', async (req, res) => {
   res.send({ weather });
 });
 
-// Define the about route
-router.get('/about', async (_, res) => {
-  res.send('About us');
-});
-
 
 module.exports = router;
