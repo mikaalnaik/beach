@@ -13,15 +13,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           node-version: '16.13.0'
       - name: Install Dependencies
         working-directory: ./apps/backend
-        run: yarn
+        run: |
+          yarn
       - name: Run test
         working-directory: ./apps/backend
-        run: yarn test
-      - uses: akhileshns/heroku-deploy@v3.12.12
+        run: |
+         yarn test
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "beachbackend" #Must be unique in Heroku
