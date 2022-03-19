@@ -1,4 +1,4 @@
-import { BeachIds } from 'consts/beachIds';
+import { BeachIds } from '../consts/beachIds';
 
 export type RawTorontoBeachResponsePoint = {
   beachId: number;

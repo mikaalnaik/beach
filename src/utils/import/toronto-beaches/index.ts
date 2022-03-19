@@ -1,7 +1,7 @@
 
 import mongo from '../../../mongo';
 import dayjs from 'dayjs';
-import { getTorontoReadings } from 'data/toronto-beaches';
+import { getTorontoReadings } from '../../../data/toronto-beaches';
 
 import type { TFormattedBeachReadings } from 'types/toronto-city-response';
 

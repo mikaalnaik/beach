@@ -6,10 +6,11 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "PORT=3000 NODE_PATH=./src  ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev": "PORT=3000 ts-node-dev --respawn --transpile-only src/index.ts",
     "start": "node dist/src/app.js",
     "test": "jest",
-    "postinstall": "tsc -p .",
+    "build": "tsc -p .",
+    "postinstall": "yarn build",
     "test:dev": "jest --watch"
   },
   "engines": {

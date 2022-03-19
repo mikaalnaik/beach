@@ -1,6 +1,6 @@
 import express from 'express';
-import { importLatestOntarioPlaceReadings } from 'utils/import/ontario-place';
-import { importWeather } from 'utils/import/weather';
+import { importLatestOntarioPlaceReadings } from '../../utils/import/ontario-place';
+import { importWeather } from '../../utils/import/weather';
 import { importTorontoBeachReadings } from '../../utils/import/toronto-beaches';
 
 const router = express.Router();

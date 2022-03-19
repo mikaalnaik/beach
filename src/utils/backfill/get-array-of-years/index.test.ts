@@ -1,4 +1,4 @@
-import { getArrayOfYearsSince2017 } from 'utils/backfill/get-array-of-years';
+import { getArrayOfYearsSince2017 } from '../../../utils/backfill/get-array-of-years';
 
 describe('Get Array of Years', () => {
   it('the last element is 2017 and the latest is the current year', () => {
