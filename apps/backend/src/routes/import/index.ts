@@ -6,8 +6,14 @@ import { importTorontoBeachReadings } from '../../utils/import/toronto-beaches';
 const router = express.Router();
 
 router.use(function timeLog(req, res, next) {
-  console.log('Time: ', Date.now());
-  next();
+  const expectedHeader = `Bearer ${process.env.API_KEY}`;
+  const gotHeader = req.headers['authorization']
+
+  if (!gotHeader || gotHeader !== expectedHeader) {
+    res.status(401).send('Unauthorized');
+  } else {
+    next();
+  }
 });
 
 // Define the home page route

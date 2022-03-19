@@ -1,4 +1,4 @@
-name: Weather Cron Job
+name: Weather Cron Job Every 5 Hours
 on:
   schedule:
     - cron: '0 */5 * * *'
@@ -9,5 +9,5 @@ jobs:
       - name: Call our API route
         run: |
           curl --request POST \
-          --url 'https://mysite.vercel.app/api/myjsfile' \
-          --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
+          --url 'https://beachbackend.herokuapp.com/import/weather' \
+          --header 'Authorization: Bearer ${{ secrets.API_KEY }}'
