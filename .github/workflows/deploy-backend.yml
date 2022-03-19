@@ -18,7 +18,9 @@ jobs:
       - run : |
           cd apps/backend
           yarn
-      - run: yarn test
+      - run: |
+          cd apps/backend
+          yarn test
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
