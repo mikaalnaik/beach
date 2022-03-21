@@ -1,15 +1,26 @@
 
-require('dotenv').config();
-import express from 'express';
+import dotenv from 'dotenv'
+dotenv.config()
 
+import express from 'express';
 const app = express();
 
-app.use('/', require('./routes/greetings'));
-app.use('/beaches', require('./routes/beaches'));
-app.use('/historical', require('./routes/historical'));
-app.use('/backfill', require('./routes/backfill'));
-app.use('/status', require('./routes/status'));
-app.use('/import', require('./routes/import'));
-app.use('/health', require('./routes/health'));
+
+import greetingsRoute from './routes/greetings';
+import beachesRoute from './routes/beaches';
+import historicalRoute from './routes/historical';
+import backfillRoute from './routes/backfill';
+import statusRoute from './routes/status';
+import importRoute from './routes/import';
+import healthRoute from './routes/health';
+
+
+app.use('/', greetingsRoute);
+app.use('/beaches', beachesRoute);
+app.use('/historical', historicalRoute);
+app.use('/backfill', backfillRoute);
+app.use('/status', statusRoute);
+app.use('/import', importRoute);
+app.use('/health', healthRoute);
 
 export default app;

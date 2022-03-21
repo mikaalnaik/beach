@@ -51,5 +51,4 @@ router.get('/weather', async (req, res) => {
   res.status(200).send(result);
 });
 
-
-module.exports = router;
+export default router

@@ -18,6 +18,7 @@ export const getLatestReadingForSpecificBeach = async (beachId: BeachIds) => {
   const db = mongo.getDb();
   const collection = db.collection('records');
 
+  // FIX: this type is incorrectly used here
   const latest = await collection.find<WaterKepperReading>({
     [`beachReadings.${beachId}`]: {
       $exists: true,

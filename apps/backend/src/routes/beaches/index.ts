@@ -63,5 +63,4 @@ router.get('/:id', async (req: Request<{ id: BeachIds }>, res) => {
 
 
 
-
-module.exports = router;
+export default router;
