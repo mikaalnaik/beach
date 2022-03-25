@@ -1,8 +1,9 @@
-const nextConfig = {
-  experimental: {
-    concurrentFeatures: true,
-    serverComponents: true,
-  },
-};
+// const nextConfig = {
+//   experimental: {
+//     concurrentFeatures: true,
+//     serverComponents: true,
+//   },
+// };
 
-module.exports = nextConfig;
+// module.exports = nextConfig;
+// //
