@@ -5,6 +5,7 @@
   position: relative;
   padding-top: 2rem;
   display: inline-block;
+  width: 100%;
 
   @include tablet {
     padding: 4rem
@@ -54,7 +55,7 @@
     grid-template-columns: 1fr 1fr;
   }
   @include desktop {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 

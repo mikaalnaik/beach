@@ -3,6 +3,7 @@
 .beachcard {
   border-radius: 4px;
   width: 100%;
+  height: 400px;
   display: inline-block;
   transform: translateY(0px);
   transition: all 600ms ease;
@@ -23,7 +24,9 @@
 
 
 .image-wrapper {
-  background-color: rgb(14, 3, 105);
+  background-color: rgba(38, 39, 48, 1);
+  border-radius: 4px 4px 0 0;
+  height: 300px;
 }
 
 .image {

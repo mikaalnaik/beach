@@ -40,6 +40,8 @@ export default function Home({ weather, beaches, ontarioPlaceBeach }: Props) {
     </div>
   ));
 
+  console.log('beaches', beaches);
+
   return (
     <div className={styles.home}>
       <Head>
@@ -58,7 +60,7 @@ export default function Home({ weather, beaches, ontarioPlaceBeach }: Props) {
         <h5>Show respect for the health of others and for the beauty of our natural spaces.</h5>
         <div className={styles['beach-list']}>
           {beachCards}
-          <BeachCard beach={ontarioPlaceBeach} key={12} imgSrc={'/beach-11.jpg'} />
+          <BeachCard beach={ontarioPlaceBeach} key={13} imgSrc={'/beach-11.jpg'} />
         </div>
       </main>
       {/* <Footer /> */}

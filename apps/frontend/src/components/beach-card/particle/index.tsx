@@ -48,7 +48,7 @@ const config = {
     // The minimum particle size
     minSize: 10,
     // The maximum particle size
-    maxSize: 75,
+    maxSize: 30,
     // true/false render particles
     visible: true,
   },

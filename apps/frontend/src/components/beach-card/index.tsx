@@ -13,11 +13,9 @@ dayjs.extend(relativeTime);
 
 interface Props {
   beach: Beach;
-  hideImage?: boolean;
-  imgSrc?: string;
 }
 
-const BeachCard = ({ beach, hideImage, imgSrc }: Props) => {
+const BeachCard = ({ beach }: Props) => {
   const { eColi, collectionDate, beachId } = beach;
   const beachDisplayName = beachPositions(beachId).displayName;
   // const router = useRouter();
@@ -29,11 +27,9 @@ const BeachCard = ({ beach, hideImage, imgSrc }: Props) => {
 
   return (
     <div className={styles['beachcard']} onClick={clickBeach}>
-      {!hideImage &&
-        <div className={styles['image-wrapper']}>
-          <Particle ecoli={eColi} />
-        </div>
-      }
+      <div className={styles['image-wrapper']}>
+        <Particle ecoli={eColi} />
+      </div>
       <div className={styles['beachcard-content']}>
         <section className={styles.row}>
           <div className={styles.title}>{beachDisplayName}</div>

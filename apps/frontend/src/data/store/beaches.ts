@@ -10,6 +10,7 @@ export const getLatestFromCity = async () => {
   const beachDataArray = await fetch(`https://secure.toronto.ca/opendata/adv/beach_results/v1?format=json&startDate=${startDate}&endDate=${endDate}`).then(res => res.json());
   const collectionDate = beachDataArray[0].CollectionDate;
   const beaches = beachDataArray[0].data.map((beach: RawBeach) => {
+    console.log('beach', beach);
     return { ...beach, collectionDate };
   });
 
