@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import styles from './style.module.scss';
 import BeachStatus from './beach-status';
+import Particle from './particle';
 // import { useRouter } from 'next/router';
 // import { beachIDToRouteName } from '../../utils/beachRouteMatch';
 
@@ -30,7 +31,7 @@ const BeachCard = ({ beach, hideImage, imgSrc }: Props) => {
     <div className={styles['beachcard']} onClick={clickBeach}>
       {!hideImage &&
         <div className={styles['image-wrapper']}>
-          <img src={imgSrc || `/beach-${beach.beachId}.jpg`} className={styles.image} />
+          <Particle ecoli={eColi} />
         </div>
       }
       <div className={styles['beachcard-content']}>
