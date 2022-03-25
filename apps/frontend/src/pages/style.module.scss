@@ -1,0 +1,64 @@
+@import 'src/styles/imports';
+
+.home {
+  padding: 2rem;
+  position: relative;
+  padding-top: 2rem;
+  display: inline-block;
+
+  @include tablet {
+    padding: 4rem
+  }
+  @include desktop {
+    padding: 4rem
+  }
+}
+
+.title-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.ferry {
+  border: none;
+  background: white;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+
+  img {
+    height: 20px;
+    margin-right: 1rem;
+  }
+}
+
+.beach-list {
+  display: grid;
+  grid-template-columns: 100%;
+  padding-top: 2rem;
+  grid-gap: 4rem;
+  margin-bottom: 3rem;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include desktop {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+.card-container {
+
+}
