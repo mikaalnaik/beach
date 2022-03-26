@@ -2,11 +2,10 @@ import Head from 'next/head';
 import BeachCard from '../components/beach-card';
 import { getLatestFromCity, getOntarioPlaceReading } from 'src/data/store/beaches';
 import getWeather from 'src/data/store/weather';
+import HomePageHeader from 'src/components/home-page-header';
 import styles from './style.module.scss';
 
 import type { Beach } from 'src/types/beaches';
-import WeatherHeader from 'src/components/weather-header';
-import HomePageHeader from 'src/components/home-page-header';
 
 // Swim Drink Fish JSON data. Ontario Place beach! Need illustration
 //  Published Thurssday afternoons from July 23rd to ???.
