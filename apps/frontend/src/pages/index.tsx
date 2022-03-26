@@ -12,9 +12,13 @@ import WeatherHeader from 'src/components/weather-header';
 // http://translate.theswimguide.org/toronto/json
 
 export async function getStaticProps() {
-  const weather = await getWeather();
-  const beaches = await getLatestFromCity();
-  const ontarioPlaceBeach = await getOntarioPlaceReading();
+
+  const [weather, beaches, ontarioPlaceBeach] = await Promise.all([
+    getWeather(),
+    getLatestFromCity(),
+    getOntarioPlaceReading(),
+  ]);
+
 
   return {
     props: {
