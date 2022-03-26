@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import BeachCard from '../components/beach-card';
 import { getLatestFromCity, getOntarioPlaceReading } from 'src/data/store/beaches';
-import getWeather from 'src/data/store/weather';
 import HomePageHeader from 'src/components/home-page-header';
 import styles from './style.module.scss';
 
@@ -13,8 +12,7 @@ import type { Beach } from 'src/types/beaches';
 
 export async function getStaticProps() {
 
-  const [weather, beaches, ontarioPlaceBeach] = await Promise.all([
-    getWeather(),
+  const [beaches, ontarioPlaceBeach] = await Promise.all([
     getLatestFromCity(),
     getOntarioPlaceReading(),
   ]);
@@ -24,7 +22,6 @@ export async function getStaticProps() {
     props: {
       beaches,
       ontarioPlaceBeach,
-      weather,
     },
     revalidate: 3600, // In seconds
   };
@@ -36,7 +33,7 @@ interface Props {
   ontarioPlaceBeach: Beach;
 }
 
-export default function Home({ weather, beaches, ontarioPlaceBeach }: Props) {
+export default function Home({  beaches, ontarioPlaceBeach }: Props) {
 
   const beachCards = beaches.map((beach, index) => (
     <div key={index}>
