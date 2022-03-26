@@ -5,23 +5,13 @@
   width: 100%;
   position: relative;
   height: 400px;
-  display: inline-block;
-  transform: translateY(0px);
-  transition: all 600ms ease;
-  // cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.11),
+            0 2px 2px rgba(0,0,0,0.11),
+            0 4px 4px rgba(0,0,0,0.11),
+            0 8px 8px rgba(0,0,0,0.11),
+            0 16px 16px rgba(0,0,0,0.11),
+            0 32px 32px rgba(0,0,0,0.11);
 }
-
-.title {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-.ecoli {
-  font-size: 1rem;
-  margin-left: 5px;
-}
-
 
 .image-wrapper {
   background-color: rgba(38, 39, 48, 1);
@@ -36,26 +26,4 @@
   object-fit: contain;
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
-}
-
-.beachcard-content {
-  padding: 0.75rem;
-  display: block;
-  position: absolute;
-  background-color: white;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-
-  bottom: 20%;
-}
-
-.row {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.collection-date {
-  font-size: 0.65rem;
-  text-align: left;
 }

@@ -52,7 +52,7 @@ export default function Home({ weather, beaches, ontarioPlaceBeach }: Props) {
         <title>Toronto Beach Report</title>
         <meta name="description" content="The easiest way to access information about Toronto's 11 beaches and they ferry schedule"></meta>
       </Head>
-      <HomePageHeader weather={weather} />
+      <HomePageHeader />
       <main>
         <div className={styles['beach-list']}>
           {beachCards}

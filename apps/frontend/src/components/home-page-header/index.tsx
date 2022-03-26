@@ -1,15 +1,13 @@
 import React from 'react';
-import WeatherHeader from '../weather-header';
 import styles from './style.module.scss';
 
 
-const HomePageHeader = ({ weather }) => {
+const HomePageHeader = () => {
   return (
     <section className={styles['title-section']}>
       <h1 className={styles.title}>
-            Toronto Beaches
+        Toronto Beach Report
       </h1>
-      <WeatherHeader weather={weather.current} />
     </section>
   );
 };
