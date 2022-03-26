@@ -2,10 +2,7 @@ import React from 'react';
 import contributors from 'src/data/contributors';
 import styles from './style.module.scss';
 
-
-
 export default function Contributors() {
-
   return (
     <div className={styles.component}>
       <h1>

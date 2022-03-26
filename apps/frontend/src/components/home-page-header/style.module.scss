@@ -1,0 +1,13 @@
+.title-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-family: 'Jost', sans-serif;
+  margin-bottom: 0;
+  font-weight: 500;
+}

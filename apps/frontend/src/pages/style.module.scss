@@ -5,6 +5,7 @@
   position: relative;
   padding-top: 2rem;
   display: inline-block;
+  width: 100%;
 
   @include tablet {
     padding: 4rem
@@ -12,17 +13,6 @@
   @include desktop {
     padding: 4rem
   }
-}
-
-.title-section {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.title {
-  font-size: 1.5rem;
 }
 
 .ferry {
@@ -54,7 +44,7 @@
     grid-template-columns: 1fr 1fr;
   }
   @include desktop {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
