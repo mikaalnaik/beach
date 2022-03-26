@@ -19,6 +19,10 @@ jobs:
         working-directory: ./apps/backend
         run: |
           yarn
+      - name: Lint
+        working-directory: ./apps/backend
+        run: |
+          yarn lint
       - name: Run test
         working-directory: ./apps/backend
         run: |

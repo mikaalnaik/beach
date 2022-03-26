@@ -7,4 +7,4 @@ router.get('/', async (_, res) => {
 });
 
 
-module.exports = router;
+export default router

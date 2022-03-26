@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.use(function timeLog(req, res, next) {
   const expectedHeader = `Bearer ${process.env.API_KEY}`;
-  const gotHeader = req.headers['authorization']
+  const gotHeader = req.headers['authorization'];
 
   if (!gotHeader || gotHeader !== expectedHeader) {
     res.status(401).send('Unauthorized');
@@ -30,4 +30,4 @@ router.get('/weather', async (req, res) => {
 });
 
 
-module.exports = router;
+export default router

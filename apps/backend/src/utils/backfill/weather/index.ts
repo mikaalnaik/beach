@@ -9,7 +9,7 @@ import { getWeather } from '../../weather/get-weather';
 import { WeatherStations } from '../../../consts/weatherStations';
 import { isValidWeatherDataPoint } from '../../weather/weather-data-validator';
 
-const parseString = require('xml2js').parseString;
+import xml2js from 'xml2js';
 
 export const backfillWeather = async () => {
   const years = getArrayOfYearsSince2017();
@@ -43,7 +43,7 @@ export const getParsedWeather = async (year: number, stationID: WeatherStations)
 
 export const parseWeatherXML = (weather: string): Promise<TRawWeatherResponse> => {
   return new Promise((resolve, reject) => {
-    parseString(weather, (err, result: TRawWeatherResponse) => {
+    xml2js.parseString(weather, (err, result: TRawWeatherResponse) => {
       if (err) {
         reject(err);
       } else {
