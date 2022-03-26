@@ -17,7 +17,7 @@ interface Props {
 
 const BeachCard = ({ beach }: Props) => {
   const { eColi,
-    //  collectionDate,
+    collectionDate,
     beachId } = beach;
   const beachDisplayName = beachPositions(beachId).displayName;
   // const router = useRouter();
@@ -38,20 +38,14 @@ const BeachCard = ({ beach }: Props) => {
         </div>
         <section className={styles.row}>
           <BeachStatus eColi={eColi} />
-          <div>
-            <div className={styles.ecoli}>
-              {eColi && <> {eColi} E. coli </>}
-              {!eColi && <> Not Tested </>}
-            </div>
+          <div className={styles.ecoli}>
+            {eColi && <> {eColi} E. coli </>}
+            {!eColi && <> Not Tested </>}
           </div>
         </section>
-        {/* <section className={styles.row}>
-          <div>
-            <div className={styles['collection-date']}>
-              {dayjs(collectionDate).fromNow()}
-            </div>
-          </div>
-        </section> */}
+        <div className={styles['collection-date']}>
+          {dayjs(collectionDate).fromNow()}
+        </div>
       </div>
     </div>
   );

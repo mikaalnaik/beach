@@ -78,13 +78,18 @@ const config = {
 
 
 
-const ParticlesAnimation = ( { ecoli }: { ecoli: number}) => {
+const ParticlesAnimation = ( { ecoli }: { ecoli: number }) => {
+
+  const minParticleSize = ecoli < 35 ? 8 : 10;
+  const maxParticleSize = ecoli < 35 ? 10 : 30;
 
   const beachConfig = {
     ...config,
     particles: {
       ...config.particles,
       count: ecoli,
+      minSize: minParticleSize,
+      maxSize: maxParticleSize,
     },
   };
 

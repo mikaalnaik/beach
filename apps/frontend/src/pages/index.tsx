@@ -6,6 +6,7 @@ import styles from './style.module.scss';
 
 import type { Beach } from 'src/types/beaches';
 import WeatherHeader from 'src/components/weather-header';
+import HomePageHeader from 'src/components/home-page-header';
 
 // Swim Drink Fish JSON data. Ontario Place beach! Need illustration
 //  Published Thurssday afternoons from July 23rd to ???.
@@ -52,16 +53,8 @@ export default function Home({ weather, beaches, ontarioPlaceBeach }: Props) {
         <title>Toronto Beach Report</title>
         <meta name="description" content="The easiest way to access information about Toronto's 11 beaches and they ferry schedule"></meta>
       </Head>
+      <HomePageHeader weather={weather} />
       <main>
-        <section className={styles['title-section']}>
-          <h1 className={styles.title}>
-            Toronto Beaches
-          </h1>
-          <WeatherHeader weather={weather.current} />
-
-        </section>
-
-        <h5>Show respect for the health of others and for the beauty of our natural spaces.</h5>
         <div className={styles['beach-list']}>
           {beachCards}
           <BeachCard beach={ontarioPlaceBeach} key={13} />
