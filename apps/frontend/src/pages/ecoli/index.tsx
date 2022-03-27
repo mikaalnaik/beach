@@ -12,9 +12,9 @@ const EcoliPage = () => {
         <p>
           That's a great question. E. coli, also known as Escherichia coli are bacteria found in all kinds of place.
         </p>
-        <p>
+        {/* <p>
           100 Colony Forming Units (CFUs) per 100 millilitres of water
-        </p>
+        </p> */}
       </section>
     </Layout>
   );
