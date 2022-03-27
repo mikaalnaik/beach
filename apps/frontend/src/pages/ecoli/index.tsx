@@ -6,7 +6,6 @@ const EcoliPage = () => {
   return (
     <Layout>
       <section>
-
         <h1>
         What is E. coli even?
         </h1>

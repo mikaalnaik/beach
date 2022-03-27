@@ -10,9 +10,7 @@ export default function Layout({ children }) {
         <title>Toronto Beach Report</title>
         <meta name="description" content="The easiest way to access information about Toronto's 11 beaches and they ferry schedule"></meta>
       </Head>
-      <nav>
-        <HomePageHeader />
-      </nav>
+      <HomePageHeader />
       <main className={styles.home}>
         {children}
       </main>

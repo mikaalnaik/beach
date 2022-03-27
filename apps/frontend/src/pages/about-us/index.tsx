@@ -33,14 +33,13 @@ export default function AboutUs() {
           What we do need is <b>you!</b> Your thoughts, opinions, feedback, and support are what powers the project.
         </p>
         <p className={styles.component}>
-        If you're a software engineer, or designer, you can help us out by
-        contributing to the project. Developers can find the monorepo for the project at Github
-          <a href="https://www.github.com/mikaalnaik/beach">
-         here.
+          You can find all the code for the project
+          <a href="https://www.github.com/mikaalnaik/beach" className={styles.github}>
+            here.
           </a>
         </p>
       </section>
-      <section>
+      <section className={styles.contributors}>
         <h1>
           Contributors
         </h1>

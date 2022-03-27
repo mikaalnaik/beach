@@ -5,7 +5,7 @@ import styles from './style.module.scss';
 
 const HomePageHeader = () => {
   return (
-    <section className={styles['title-section']}>
+    <nav className={styles['title-section']}>
       <h1>
         <Link href="/">
           <a className={styles.title}>
@@ -26,7 +26,7 @@ const HomePageHeader = () => {
         </Link>
 
       </div>
-    </section>
+    </nav>
   );
 };
 
