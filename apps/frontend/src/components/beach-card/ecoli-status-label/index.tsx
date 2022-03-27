@@ -2,13 +2,12 @@ import { Beach } from 'src/types/beaches';
 import styles from './style.module.scss';
 
 interface Props {
-  beach: Beach;
+  eColi: Beach['eColi'] | undefined
 }
 
-const EcoliStatusLabel = ({ beach }: Props) => {
-  const { eColi } = beach;
+const EcoliStatusLabel = ({ eColi }: Props) => {
 
-  const label = eColi ? `${eColi} E. coli` : 'Not Tested';
+  const label = eColi ? `${Math.round(eColi)} E. coli` : 'N/A';
 
   return (
     <section className={styles.component}>
