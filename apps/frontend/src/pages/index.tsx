@@ -1,7 +1,6 @@
-import Head from 'next/head';
 import BeachCard from '../components/beach-card';
 import { getLatestFromCity, getOntarioPlaceReading } from 'src/data/store/beaches';
-import HomePageHeader from 'src/components/home-page-header';
+import Layout from 'src/components/layout';
 import styles from './style.module.scss';
 
 import type { Beach } from 'src/types/beaches';
@@ -41,22 +40,12 @@ export default function Home({  beaches, ontarioPlaceBeach }: Props) {
     </div>
   ));
 
-  console.log('beaches', beaches);
-
   return (
-    <div className={styles.home}>
-      <Head>
-        <title>Toronto Beach Report</title>
-        <meta name="description" content="The easiest way to access information about Toronto's 11 beaches and they ferry schedule"></meta>
-      </Head>
-      <HomePageHeader />
-      <main>
-        <div className={styles['beach-list']}>
-          {beachCards}
-          <BeachCard beach={ontarioPlaceBeach} key={13} />
-        </div>
-      </main>
-      {/* <Footer /> */}
-    </div>
+    <Layout>
+      <div className={styles['beach-list']}>
+        {beachCards}
+        <BeachCard beach={ontarioPlaceBeach} key={13} />
+      </div>
+    </Layout>
   );
 }

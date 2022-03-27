@@ -1,13 +1,20 @@
 .title-section {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+
+  div {
+    a {
+      color: black;
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+  }
 }
 
 .title {
   font-size: 2rem;
-  font-family: 'Jost', sans-serif;
   margin-bottom: 0;
+  color: black;
+  text-decoration: none;
   font-weight: 500;
 }

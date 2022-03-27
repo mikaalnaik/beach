@@ -1,38 +1,5 @@
 @import 'src/styles/imports';
 
-.home {
-  padding: 2rem;
-  position: relative;
-  padding-top: 2rem;
-  display: inline-block;
-  width: 100%;
-
-  @include tablet {
-    padding: 4rem
-  }
-  @include desktop {
-    padding: 4rem
-  }
-}
-
-.ferry {
-  border: none;
-  background: white;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  font-size: 16px;
-  cursor: pointer;
-
-  img {
-    height: 20px;
-    margin-right: 1rem;
-  }
-}
-
 .beach-list {
   display: grid;
   grid-template-columns: 100%;
@@ -44,11 +11,6 @@
     grid-template-columns: 1fr 1fr;
   }
   @include desktop {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
-}
-
-
-.card-container {
-
 }
