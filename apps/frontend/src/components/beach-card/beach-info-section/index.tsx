@@ -16,6 +16,8 @@ interface Props {
 const BeachInfoSection = ({ beach }: Props) => {
   const {  collectionDate, beachId } = beach;
   const beachDisplayName = beachPositions(beachId).displayName;
+  const sourceName = beach.beachId === 12 ? 'Swim Drink Fish' : 'City of Toronto';
+  const prediction = undefined;
 
   return (
     <div className={styles['beachcard-content']}>
@@ -25,9 +27,31 @@ const BeachInfoSection = ({ beach }: Props) => {
           {beachDisplayName}
         </div>
       </section>
-      <EcoliStatusLabel beach={beach} />
-      <div className={styles['collection-date']}>
-        {dayjs(collectionDate).fromNow()}
+      <div className={styles.readings}>
+        <section className={styles['stat-row']}>
+          <EcoliStatusLabel eColi={beach.eColi} />
+          <div>
+            <div className={styles.source}>
+              {sourceName}
+            </div>
+            <div className={styles['collection-date']}>
+              {dayjs(collectionDate).fromNow()}
+            </div>
+          </div>
+        </section>
+        {prediction && (
+          <section className={styles['stat-row']}>
+            <EcoliStatusLabel eColi={prediction} />
+            <div>
+              <div className={styles.source}>
+              Our Prediction
+              </div>
+              <div className={styles['collection-date']}>
+              for <b>today</b>
+              </div>
+            </div>
+          </section>
+        )}
       </div>
     </div>
   );
