@@ -1,15 +1,15 @@
 
-export default function beachRouteMatch(beachID){
+export default function beachRouteMatch(beachID: string): number {
   const beachNamesHash = {
-    mariecurtis: 1,
+    'marie-curtis': 1,
     sunnyside: 2,
     hanlans: 3,
     gibraltar: 4,
-    centerisland: 5,
-    wardsisland: 6,
+    'center-island': 5,
+    'wards-island': 6,
     cherry: 7,
     woodbine: 8,
-    kewbalmy: 9,
+    'kew-balmy': 9,
     bluffers: 10,
     rouge: 11,
     'ontario-place': 12,
