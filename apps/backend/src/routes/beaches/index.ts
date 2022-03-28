@@ -53,7 +53,8 @@ router.get('/:id', async (req: Request<{ id: BeachIds }>, res) => {
   const requestedBeachId = req.params.id;
   if (requestedBeachId in BeachIds) {
     const result = await getLatestReadingForSpecificBeach(requestedBeachId);
-    res.send(result);
+    const beachData = result.beachReadings[requestedBeachId];
+    res.send(beachData);
   } else {
     res.status(400).send('Invalid beach id');
   }
