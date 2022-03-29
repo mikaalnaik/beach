@@ -1,8 +1,5 @@
 
 
-## TODO:
-
-Ontario Place card is missing
 
 # Toronto Beach App
 
@@ -11,6 +8,10 @@ Ontario Place card is missing
 
 
 The easiest way to view **The City of Toronto's** Open Data beach data.
+
+## Notes:
+
+Believe that Rouge Beach is no longer being reported by the city. Need to clarify.
 
 
 
