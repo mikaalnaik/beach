@@ -15,8 +15,9 @@ interface Props {
 
 const BeachInfoSection = ({ beach }: Props) => {
   const {  collectionDate, beachId } = beach;
-  const beachDisplayName = beachPositions(beachId).displayName;
-  const sourceName = beach.beachId === 12 ? 'Swim Drink Fish' : 'City of Toronto';
+  console.log('beachh id', beachId);
+  const beachDisplayName = beachPositions(Number(beachId)).displayName;
+  const sourceName = Number(beach.beachId) === 12 ? 'Swim Drink Fish' : 'City of Toronto';
   const prediction = undefined;
 
   return (

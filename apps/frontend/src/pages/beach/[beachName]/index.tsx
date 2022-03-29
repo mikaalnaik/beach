@@ -1,6 +1,6 @@
 import React from 'react';
-import ParticlesAnimation from 'src/components/beach-card/particle';
-import { beachPositions } from 'src/utils/beachPositions';
+import { ParticlesAnimation } from 'src/components/beach-card/particle';
+import { beachPositions, getBeachConstants } from 'src/utils/beachPositions';
 import beachRouteMatch from 'src/utils/beachRouteMatch';
 import fetch from 'node-fetch';
 import styles from './style.module.scss';
@@ -9,27 +9,24 @@ import { endpoint } from 'src/data/endpoints';
 export async function getStaticPaths() {
   return {
     paths: [
-      '/beach/marie-curtis',
       '/beach/hanlans',
     ],
-    fallback: true,
+    fallback: 'blocking',
   };
 }
 
 
-const getBeachData = async () => {
-  const weather = await fetch(`${endpoint}/beaches/1`)
-    .then(r => r.json());
-  return weather;
+const getBeachData = async (id: number) => {
+  const r = await fetch(`${endpoint}/beaches/${id}`);
+  return await r.json();
 };
 
 
 
 export async function getStaticProps({ params }) {
-  console.log('params', params);
-  const beachID = beachRouteMatch(params.beachID);
-  const beachName = beachPositions(beachID).displayName;
-  const reading = await getBeachData();
+  const beachID = beachRouteMatch(params.beachName);
+  const beachName = getBeachConstants(beachID).displayName;
+  const reading = await getBeachData(beachID);
 
   const beachData = {
     id: beachID,
@@ -37,7 +34,6 @@ export async function getStaticProps({ params }) {
     reading,
   };
 
-  console.log('beachData', beachData);
   return {
     props: {
       beachData,
@@ -46,12 +42,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-
-
-
 export default function BeachPage({ beachData }) {
-
-  console.log('beachData', beachData);
 
   return (
     <div className={styles.component}>
@@ -59,7 +50,6 @@ export default function BeachPage({ beachData }) {
         <h1>
           {beachData?.name}
         </h1>
-        Content
       </section>
       <div className={styles.particle}>
         <ParticlesAnimation ecoli={beachData?.reading.eColi} />
