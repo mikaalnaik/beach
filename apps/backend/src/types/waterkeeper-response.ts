@@ -55,7 +55,7 @@ export type WaterKepperReading = {
   organizationName: 'Lake Ontario Waterkeeper (http://www.waterkeeper.ca)';
   publicationTime: string;
   guid: string;
-  ecoli: number;
+  eColi: number;
   substance: string;
   sample: {
     result: number;
@@ -76,7 +76,7 @@ export type WaterKepperReading = {
     };
     collector: string;
   };
-  beachId: string;
+  beachId: number;
   beachName: 'Ontario Place West Beach';
   collectionDate: string;
   providerId: ProviderId;
