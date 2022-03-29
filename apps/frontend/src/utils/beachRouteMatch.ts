@@ -19,15 +19,15 @@ export default function beachRouteMatch(beachID: string): number {
 
 export function beachIDToRouteName(id) {
   const beachNamesHash = {
-    1: 'mariecurtis',
+    1: 'marie-curtis',
     2: 'sunnyside',
-    3: 'hanlans',
+    3: 'hanlans-point',
     4: 'gibraltar',
-    5: 'centerisland',
-    6: 'wardsisland',
+    5: 'center-island',
+    6: 'wards-island',
     7: 'cherry',
     8: 'woodbine',
-    9: 'kewbalmy',
+    9: 'kew-balmy',
     10: 'bluffers',
     11: 'rouge',
     15: 'ontario-place',

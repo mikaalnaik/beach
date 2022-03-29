@@ -9,7 +9,7 @@ import { endpoint } from 'src/data/endpoints';
 export async function getStaticPaths() {
   return {
     paths: [
-      '/beach/hanlans',
+      '/beach/hanlans-point',
     ],
     fallback: 'blocking',
   };
