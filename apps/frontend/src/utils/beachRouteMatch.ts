@@ -3,7 +3,7 @@ export default function beachRouteMatch(beachID: string): number {
   const beachNamesHash = {
     'marie-curtis': 1,
     sunnyside: 2,
-    hanlans: 3,
+    'hanlans-point': 3,
     gibraltar: 4,
     'centre-island': 5,
     'wards-island': 6,

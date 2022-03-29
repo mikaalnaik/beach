@@ -1,6 +1,6 @@
 import React from 'react';
 import { ParticlesAnimation } from 'src/components/beach-card/particle';
-import { beachPositions, getBeachConstants } from 'src/utils/beachPositions';
+import { getBeachConstants } from 'src/utils/beachPositions';
 import beachRouteMatch from 'src/utils/beachRouteMatch';
 import fetch from 'node-fetch';
 import styles from './style.module.scss';
@@ -15,13 +15,10 @@ export async function getStaticPaths() {
   };
 }
 
-
 const getBeachData = async (id: number) => {
   const r = await fetch(`${endpoint}/beaches/${id}`);
   return await r.json();
 };
-
-
 
 export async function getStaticProps({ params }) {
   const beachID = beachRouteMatch(params.beachName);
@@ -29,7 +26,6 @@ export async function getStaticProps({ params }) {
   const reading = await getBeachData(beachID);
 
   const beachData = {
-    id: beachID,
     name: beachName,
     reading,
   };
