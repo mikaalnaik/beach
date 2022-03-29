@@ -25,7 +25,13 @@ router.get('/latest', async (req, res) => {
     .sort({ collectionDate: -1 })
     .limit(1)
     .toArray();
-  res.send({ ontarioPlaceResult, cityOfTorontoResult });
+
+  const formattedCityOfTorontoResult = Object.values(cityOfTorontoResult[0].beachReadings);
+  const formattedOntarioPlaceReading = ontarioPlaceResult[0].beachReadings['15'];
+  const beaches = [...formattedCityOfTorontoResult, formattedOntarioPlaceReading];
+
+
+  res.send(beaches);
 });
 
 router.get('/all-time', async (req, res) => {
