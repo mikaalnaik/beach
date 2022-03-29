@@ -16,7 +16,7 @@ const HomePageHeader = () => {
       <div>
         <Link href="/ecoli">
           <a>
-          What do readings mean?
+          What do these readings mean?
           </a>
         </Link>
         <Link href="/about-us">
@@ -24,7 +24,6 @@ const HomePageHeader = () => {
            About the project
           </a>
         </Link>
-
       </div>
     </nav>
   );

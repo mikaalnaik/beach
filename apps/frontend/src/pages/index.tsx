@@ -25,16 +25,19 @@ interface Props {
 export default function Home({ beaches }: Props) {
 
   const beachCards = beaches.map((beach, index) => (
-    <div key={index}>
-      <BeachCard beach={beach} key={index} />
-    </div>
+    <BeachCard beach={beach} key={index} />
   ));
 
   return (
     <Layout>
-      <div className={styles['beach-list']}>
-        {beachCards}
-      </div>
+      <section className={styles.description}>
+        <p>
+          E. coli measurements are per 100 ml of water.
+        </p>
+        <div className={styles['beach-list']}>
+          {beachCards}
+        </div>
+      </section>
     </Layout>
   );
 }
