@@ -11,7 +11,7 @@ describe('Format Ontario Place response point', () => {
       organizationName: 'Lake Ontario Waterkeeper (http://www.waterkeeper.ca)',
       publicationTime: '2021-12-10T15:24:00-05:00',
       guid: 'ca.swimdrinkfish/ID21-15C-32-TC',
-      ecoli: 410.6,
+      eColi: 410.6,
       substance: 'total_coliform',
       sample: {
         result: 410.6,
@@ -32,7 +32,7 @@ describe('Format Ontario Place response point', () => {
         },
         collector: 'Isabel',
       },
-      beachId: '15',
+      beachId: 15,
       beachName: 'Ontario Place West Beach',
       collectionDate: Temporal.PlainDate.from('2021-12-09T13:45:00-05:00').toString(),
       providerId: 2,
