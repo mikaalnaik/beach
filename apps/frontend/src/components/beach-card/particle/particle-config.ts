@@ -14,7 +14,7 @@ export const particleConfig = {
   // 'passthru' particles will disappear after hitting canvas boundaries and be added back into the scene elsewhere
   boundaryType: 'bounce',
   // Maximum velocity of particles
-  velocity: 2,
+  velocity: 1.25,
   // Toggles antialiasing -- must be set during construction, cannot be changed after initial render
   // Slight performance optimization to set false, although lines will appear more jagged
   antialias: false,
