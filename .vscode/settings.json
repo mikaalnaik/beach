@@ -1,0 +1,8 @@
+{
+  "deno.enable": false,
+  "deno.enablePaths": [
+    "./apps/services/ferry",
+  ],
+  "deno.lint": true,
+  "deno.unstable": false
+}
