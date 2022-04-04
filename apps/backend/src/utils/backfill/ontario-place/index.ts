@@ -14,7 +14,7 @@ export const getOntarioPlaceReading = async () => {
 
 export const insertOntarioPlaceReadings = async (readings: WaterKepperReading[]) => {
   const db = mongo.getDb();
-  return readings.map(async reading => {
+  return await readings.map(async reading => {
     const filter = {
       collectionDate: dayjs(reading.collectionDate).format('YYYY-MM-DD').toString(),
     };

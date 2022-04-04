@@ -1,0 +1,13 @@
+{
+  "name": "ferry",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.json index.ts",
+    "start": "npm run build -- -w"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
+}
