@@ -3,7 +3,6 @@ import { Beach } from 'src/types/beaches';
 import styles from './style.module.scss';
 import BeachInfoSection from './beach-info-section';
 import { getBeachConstants } from 'src/utils/beachPositions';
-import { useState } from 'react';
 import Image from 'next/image';
 
 interface Props {
