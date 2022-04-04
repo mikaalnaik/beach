@@ -1,20 +1,17 @@
 import { useRouter } from 'next/router';
 import { Beach } from 'src/types/beaches';
 import styles from './style.module.scss';
-import { ParticlesAnimation } from './particle';
 import BeachInfoSection from './beach-info-section';
-import VisibilitySensor from 'react-visibility-sensor';
 import { getBeachConstants } from 'src/utils/beachPositions';
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface Props {
   beach: Beach;
 }
 
 const BeachCard = ({ beach }: Props) => {
-  const { eColi } = beach;
   const router = useRouter();
-  const [isVisible, setIsVisible] = useState(false);
 
   const handleClick = () => {
     // Create specific page for Ontario Place beach
@@ -27,16 +24,24 @@ const BeachCard = ({ beach }: Props) => {
 
   return (
     <div className={styles['beachcard']} onClick={handleClick}>
-      <VisibilitySensor
+      {/* <VisibilitySensor
         partialVisibility={true}
         onChange={setIsVisible}
-      >
-        <div className={styles['image-wrapper']}>
-          {isVisible && (
+      > */}
+      {/* <div className={styles['image-wrapper']}> */}
+      <Image
+        src='/m-rose-cherry-no-text.jpeg'
+        objectFit='contain'
+        layout='responsive'
+        width={90}
+        height={106}
+      />
+
+      {/* {isVisible && (
             <ParticlesAnimation ecoli={eColi} />
-          )}
-        </div>
-      </VisibilitySensor>
+          )} */}
+      {/* </div> */}
+      {/* </VisibilitySensor> */}
       <BeachInfoSection beach={beach} />
     </div>
   );
