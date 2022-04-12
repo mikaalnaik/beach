@@ -1,5 +1,10 @@
 **/*/node_modules
+**/*/.next
+
+
+#  Environment variables
 **/*/.env
 **/*/.env.local
-apps/backend/dist
-**/*/.next
+
+# Build Directories
+**/*/dist

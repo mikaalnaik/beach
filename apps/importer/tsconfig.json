@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es6",
+    "outDir": "dist",
+    "baseUrl": "src",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "paths": {
+      "fixtures/*": ["../__fixtures__/*"],
+      "consts/*": ["./consts/*"]
+    },
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": ["node_modules", "*/__fixtures__"],
+  "ignore": [
+    "node_modules",
+  ],
+}
