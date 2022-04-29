@@ -9,6 +9,6 @@ jobs:
       - name: Fetch Latest Beach Readings
         run: |
           curl --request POST \
-          --url 'https://beachbackend.herokuapp.com/import/beaches' \
+          --url 'https://beach-importer.herokuapp.com/import/beaches' \
           --header 'Authorization: Bearer ${{ secrets.API_KEY }}'
         shell: bash

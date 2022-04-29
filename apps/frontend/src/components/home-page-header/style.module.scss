@@ -1,13 +1,36 @@
+@import 'src/styles/imports';
+
 .title-section {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    @include desktop {
+      flex-direction: row;
+    }
+
+    a {
+      color: black;
+      font-size: 12px;
+      font-weight: 300;
+      margin-right: 1rem;
+      margin-bottom: .5rem;
+      white-space: nowrap;
+    }
+  }
 }
 
 .title {
   font-size: 2rem;
-  font-family: 'Jost', sans-serif;
   margin-bottom: 0;
+  color: black;
+  text-decoration: none;
   font-weight: 500;
 }

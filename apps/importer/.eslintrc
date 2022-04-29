@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
+  ],
+  "rules": {
+        "no-multi-spaces": "error",
+    "comma-dangle": ["error", "always-multiline"],
+    "indent": ["error", 2],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "arrow-parens": ["error", "as-needed"],
+    "array-bracket-spacing": ["error", "never"],
+    "object-curly-spacing": ["error", "always", { "objectsInObjects": false, "arraysInObjects": false }],
+    "quote-props": ["error", "as-needed"],
+    "keyword-spacing": "error",
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "@typescript-eslint/semi": "error",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off", // TODO: Remove this once everything is properly typed without "!" fields
+    "@typescript-eslint/no-explicit-any": "warn", // TODO: Remove this once everything is properly typed without ":any" fields
+    "@typescript-eslint/member-delimiter-style": ["error"]
+  }
+}

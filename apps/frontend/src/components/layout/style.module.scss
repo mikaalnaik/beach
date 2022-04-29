@@ -1,0 +1,23 @@
+@import 'src/styles/imports';
+
+.main {
+  padding: 2rem;
+  position: relative;
+  padding-top: 2rem;
+  display: inline-block;
+  width: 100%;
+
+  @include tablet {
+    padding: 4rem
+  }
+  @include desktop {
+    padding: 4rem
+  }
+}
+
+.home {
+  position: relative;
+  padding-top: 1rem;
+  display: inline-block;
+  width: 100%;
+}
