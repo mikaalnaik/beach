@@ -17,7 +17,8 @@ const mongo = {
         return callback(err);
       }
 
-      dbConnection = db.db('beach_db');
+
+      dbConnection = db.db('staging_beach_db');
       console.log('Successfully connected to MongoDB.');
 
       return callback();

@@ -1,3 +1,4 @@
+import { WeatherStations } from 'consts/weatherStations';
 import { weatherFixture } from 'fixtures/weather/weather-response';
 import { getWeatherToInsert } from './index';
 
@@ -16,7 +17,8 @@ jest.mock('../../backfill/weather', () => {
 describe('Weather Importer', () => {
   it('works as expected', async () => {
 
-    const got = await getWeatherToInsert();
+
+    const got = await getWeatherToInsert(2022, WeatherStations.PostJune2013);
 
     // This is kind of arbitrary. When I took the snapshot to the beginning of the year.
     expect(got.length).toEqual(70);

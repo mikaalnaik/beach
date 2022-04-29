@@ -1,17 +1,43 @@
 
 import mongo from '../../../mongo';
 import dayjs from 'dayjs';
-import { getTorontoReadings } from '../../../data/toronto-beaches';
+import formatBackfill from '../../../utils/backfill/toronto-beaches/backfill-toronto-beach';
 
-import type { TFormattedBeachReadings } from 'types/toronto-city-response';
+import type { RawTorontoBeachDateResponse, TFormattedBeachReadings } from 'types/toronto-city-response';
+
+
+const EARLIEST_TORONTO_READING = '2007-06-03';
+// get current date with same format
+const currentDate = dayjs().format('YYYY-MM-DD');
+
+export const backfillTorontoBeaches = async () => {
+  const allTimeReadings = await getTorontoReadings(EARLIEST_TORONTO_READING, currentDate);
+  const results = await Promise.all(allTimeReadings.map(insertBeachReading));
+  return results;
+};
+
+
+export const getTorontoReadings = async (startDate: string, endDate: string) => {
+  const rawResponse = await fetch(
+    `https://secure.toronto.ca/opendata/adv/beach_results/v1?format=json&startDate=${startDate}&endDate=${endDate}`
+  );
+  const response = await rawResponse.json() as RawTorontoBeachDateResponse[];
+  if (response) {
+    return formatBackfill(response);
+  } else {
+    return [];
+  }
+};
+
 
 export const importTorontoBeachReadings = async () => {
   const endDate = await getLastReportingDateFromToronto();
   const exists = await checkIfReadingExistsInMongo(endDate);
   if (!exists) {
     const readings = await getTorontoReadings(endDate, endDate);
-    readings.map(insertBeachReading);
-    return { message: `Successful insertion of ${readings.length} readings` };
+    const inserts = readings.map(insertBeachReading);
+    const mongoInserts = await Promise.all(inserts);
+    return { message: `Successful insertion of ${mongoInserts.length} readings` };
   }
   return { message: 'No new readings' };
 };

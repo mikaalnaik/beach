@@ -42,6 +42,8 @@ export const getParsedWeather = async (year: number, stationID: WeatherStations)
 };
 
 export const parseWeatherXML = (weather: string): Promise<TRawWeatherResponse> => {
+  // It's crazy old javascript looks like this.
+  // Consider seeing if XML2JS exposes an API without the callback.
   return new Promise((resolve, reject) => {
     parseString(weather, (err, result: TRawWeatherResponse) => {
       if (err) {

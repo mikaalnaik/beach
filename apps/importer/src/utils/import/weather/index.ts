@@ -4,23 +4,24 @@ import { getParsedWeather, insertWeatherIntoMongo } from '../../backfill/weather
 import { formatDailyDataPoint } from '../../weather/format-daily-data-point';
 import { formatStationData } from '../../weather/format-station-data';
 import { isValidWeatherDataPoint } from '../../weather/weather-data-validator';
-import { getArrayOfYearsSince2017 } from 'utils/backfill/get-array-of-years';
+import { getArrayOfYearsSince2017 } from '../../../utils/backfill/get-array-of-years';
+// import { getArrayOfYearsSince2017 } from 'utils/backfill/get-array-of-years';
 
 export const importWeather = async () => {
-  const readings = await getWeatherToInsert();
+  const year = dayjs().year();
+  const station = WeatherStations.PostJune2013;
+  const readings = await getWeatherToInsert(year, station);
   readings.forEach(item => {
     insertWeatherIntoMongo(item);
   });
 };
 
-
-export const getWeatherToInsert = async () => {
-  const year = dayjs().year();
-  const weather = await getParsedWeather(year, WeatherStations.PostJune2013);
+export const getWeatherToInsert = async (year: number, stationForYear: WeatherStations) => {
+  const weather = await getParsedWeather(year, stationForYear);
   const station = formatStationData(weather);
-  const stationData = weather.climatedata.stationdata;
+  const data = weather.climatedata.stationdata;
 
-  return stationData.reduce((accum, reading) => {
+  return data.reduce((accum, reading) => {
     if (isValidWeatherDataPoint(reading)) {
       const formattedReading = formatDailyDataPoint(reading, station);
       accum.push(formattedReading);
@@ -29,26 +30,14 @@ export const getWeatherToInsert = async () => {
   }, []);
 };
 
-
 export const backfillWeather = async () => {
   const years = getArrayOfYearsSince2017();
   const inserts = years.map(async yearData => {
-    const weather = await getParsedWeather(yearData.year, yearData.stationID);
-    // return insertWeatherForYearAtStation(yearData.year, yearData.stationID);
+    const readings = await getWeatherToInsert(yearData.year, yearData.stationID);
+    return readings.map(item => {
+      insertWeatherIntoMongo(item);
+    });
   });
   const results = await Promise.all(inserts);
   return results;
-};
-
-
-const insertWeatherForYearAtStation = async (year: number, stationID: WeatherStations) => {
-  const weather = await getParsedWeather(year, stationID);
-  const station = formatStationData(weather);
-  const stationData = weather.climatedata.stationdata;
-  return stationData.map(async reading => {
-    if (isValidWeatherDataPoint(reading)) {
-      const formattedReading = formatDailyDataPoint(reading, station);
-      return await insertWeatherIntoMongo(formattedReading);
-    }
-  });
 };

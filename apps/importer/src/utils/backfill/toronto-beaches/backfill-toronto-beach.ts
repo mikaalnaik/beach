@@ -8,21 +8,6 @@ import {
   TFormattedBeachReadings,
 } from '../../../types/toronto-city-response';
 
-type formattedBackfillResponse = {
-  _id: string;
-  beachReadings: Record<string, FormattedBeachReading>;
-}[];
-
-type FormattedBeachReading = {
-  provider: string;
-  providerId: ProviderId;
-  beachId: number;
-  beachName: string;
-  eColi: number | null;
-  advisory: string;
-  statusFlag: string;
-};
-
 
 export default function formatBackfill(d: RawTorontoBeachDateResponse[]): TFormattedBeachReadings[] {
   const test = d.reduce((accum: TFormattedBeachReadings[], day) => {
