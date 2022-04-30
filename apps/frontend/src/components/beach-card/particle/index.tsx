@@ -4,8 +4,8 @@ import { particleConfig } from './particle-config';
 
 const ParticleVisualization = ( { ecoli }: { ecoli: number }) => {
 
-  const minParticleSize = ecoli < 35 ? 8 : 10;
-  const maxParticleSize = ecoli < 35 ? 10 : 30;
+  const minParticleSize = 7; //ecoli < 35 ? 8 : 10;
+  const maxParticleSize = 15; //ecoli < 35 ? 10 : 30;
 
   const beachConfig = {
     ...particleConfig,

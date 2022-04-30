@@ -1,0 +1,21 @@
+@import 'src/styles/imports';
+
+.grid {
+  display: grid;
+  grid-template-columns: 100%;
+  padding-top: 2rem;
+  grid-gap: 4rem;
+  margin-bottom: 3rem;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include desktop {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+.description {
+  font-size: 14px;
+}
