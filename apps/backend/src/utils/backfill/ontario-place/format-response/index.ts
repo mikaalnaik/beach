@@ -1,9 +1,9 @@
 import { Temporal } from '@js-temporal/polyfill';
 import { BeachNames, BeachPositions } from '../../../../consts/beachIds';
 import { ProviderId } from '../../../../consts/providerIds';
-import { WaterKeeperReponsePoint, WaterKepperReading } from '../../../../types/waterkeeper-response';
+import { WaterKeeperReponsePoint } from '../../../../types/waterkeeper-response';
 
-export const formatOntarioPlaceReading = (reading: WaterKeeperReponsePoint): WaterKepperReading => {
+export const formatOntarioPlaceReading = (reading: WaterKeeperReponsePoint) => {
   const id = Number(reading.location.id);
 
   delete reading.location;

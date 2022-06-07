@@ -2,6 +2,10 @@ import { BeachIds } from '../../consts/beachIds';
 import express, { Request } from 'express';
 import { getLatestReadingForSpecificBeach } from '../../utils/import/ontario-place';
 import mongo from '../../mongo';
+import { getLastReportingDateFromToronto } from '../../utils/import/toronto-beaches';
+import { getTorontoReadings } from '../../data/toronto-beaches';
+import { getOntarioPlaceReading } from '../../utils/backfill/ontario-place';
+import sortOntarioPlaceDataByDate from '../../utils/import/ontario-place/sort-ontario-place-by-date';
 
 const router = express.Router();
 
@@ -16,17 +20,12 @@ router.get('/latest', async (req, res) => {
     .sort({ collectionDate: -1 })
     .limit(1)
     .toArray();
-  const cityOfTorontoResult = await db.collection('records')
-    .find({
-      [`beachReadings.${BeachIds.HanlansPointBeach}`]: { // this could be any Toronto beach
-        $exists: true,
-      },
-    })
-    .sort({ collectionDate: -1 })
-    .limit(1)
-    .toArray();
 
-  const formattedCityOfTorontoResult = Object.values(cityOfTorontoResult[0].beachReadings);
+  const endDate = await getLastReportingDateFromToronto();
+  const readings = await getTorontoReadings(endDate, endDate);
+
+  
+  const formattedCityOfTorontoResult = Object.values(readings[0].beachReadings);
   const formattedOntarioPlaceReading = ontarioPlaceResult[0].beachReadings['15'];
   const beaches = [...formattedCityOfTorontoResult, formattedOntarioPlaceReading];
 
