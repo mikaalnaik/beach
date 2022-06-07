@@ -9,8 +9,17 @@ import type { Beach } from 'src/types/beaches';
 import Head from 'next/head';
 
 export async function getStaticProps() {
-  const beachResponse = await fetch(`${endpoint}/beaches/latest`);
-  const beaches = await beachResponse.json();
+  console.log('this is the getStaticProps');
+  let beaches = {};
+  try {
+
+    console.log('yeah', `${endpoint}/beaches/latest`);
+    const beachResponse = await fetch(`${endpoint}/beaches/latest`);
+    console.log('beachResponse', beachResponse);
+    beaches = await beachResponse.json();
+  } catch (error) {
+    console.log('error', error);
+  }
 
   return {
     props: {

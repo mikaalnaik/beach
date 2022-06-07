@@ -4,8 +4,6 @@ import { getLatestReadingForSpecificBeach } from '../../utils/import/ontario-pla
 import mongo from '../../mongo';
 import { getLastReportingDateFromToronto } from '../../utils/import/toronto-beaches';
 import { getTorontoReadings } from '../../data/toronto-beaches';
-import { getOntarioPlaceReading } from '../../utils/backfill/ontario-place';
-import sortOntarioPlaceDataByDate from '../../utils/import/ontario-place/sort-ontario-place-by-date';
 
 const router = express.Router();
 
@@ -24,7 +22,7 @@ router.get('/latest', async (req, res) => {
   const endDate = await getLastReportingDateFromToronto();
   const readings = await getTorontoReadings(endDate, endDate);
 
-  
+
   const formattedCityOfTorontoResult = Object.values(readings[0].beachReadings);
   const formattedOntarioPlaceReading = ontarioPlaceResult[0].beachReadings['15'];
   const beaches = [...formattedCityOfTorontoResult, formattedOntarioPlaceReading];
