@@ -2,8 +2,7 @@ import { BeachIds } from '../../consts/beachIds';
 import express, { Request } from 'express';
 import { getLatestReadingForSpecificBeach } from '../../utils/import/ontario-place';
 import mongo from '../../mongo';
-import { getLastReportingDateFromToronto } from '../../utils/import/toronto-beaches';
-import { getTorontoReadings } from '../../data/toronto-beaches';
+import { getLatestTorontoReadings } from '../../utils/import/toronto-beaches';
 
 const router = express.Router();
 
@@ -19,10 +18,7 @@ router.get('/latest', async (req, res) => {
     .limit(1)
     .toArray();
 
-  const endDate = await getLastReportingDateFromToronto();
-  const readings = await getTorontoReadings(endDate, endDate);
-
-
+  const readings = await getLatestTorontoReadings();
   const formattedCityOfTorontoResult = Object.values(readings[0].beachReadings);
   const formattedOntarioPlaceReading = ontarioPlaceResult[0].beachReadings['15'];
   const beaches = [...formattedCityOfTorontoResult, formattedOntarioPlaceReading];

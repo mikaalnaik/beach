@@ -15,7 +15,6 @@ interface Props {
 
 const BeachInfoSection = ({ beach }: Props) => {
   const {  collectionDate, beachId } = beach;
-  console.log('beachh id', beachId);
   const beachDisplayName = beachPositions(Number(beachId)).displayName;
   const sourceName = Number(beach.beachId) === 12 ? 'Swim Drink Fish' : 'City of Toronto';
   const prediction = undefined;
@@ -36,7 +35,7 @@ const BeachInfoSection = ({ beach }: Props) => {
               {sourceName}
             </div>
             <div className={styles['collection-date']}>
-              {dayjs(collectionDate).fromNow()}
+              {dayjs(dayjs(collectionDate).endOf('day')).fromNow()}
             </div>
           </div>
         </section>
