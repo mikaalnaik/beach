@@ -3,27 +3,17 @@ import express, { Request } from 'express';
 import { getLatestReadingForSpecificBeach } from '../../utils/import/ontario-place';
 import mongo from '../../mongo';
 import { getLatestTorontoReadings } from '../../utils/import/toronto-beaches';
+// import { getLatestOntarioPlaceReading } from '../../utils/ontario-place/get-latest';
+// import { getOntarioPlaceReading } from '../../utils/ontario-place/get-swim-drink-fish-data';
 
 const router = express.Router();
 
 router.get('/latest', async (req, res) => {
-  const db = mongo.getDb();
-  const ontarioPlaceResult = await db.collection('records')
-    .find({
-      [`beachReadings.${BeachIds.OntarioPlace}`]: {
-        $exists: true,
-      },
-    })
-    .sort({ collectionDate: -1 })
-    .limit(1)
-    .toArray();
-
-  const readings = await getLatestTorontoReadings();
-  const formattedCityOfTorontoResult = Object.values(readings[0].beachReadings);
-  const formattedOntarioPlaceReading = ontarioPlaceResult[0].beachReadings['15'];
-  const beaches = [...formattedCityOfTorontoResult, formattedOntarioPlaceReading];
-
-
+  // const waterKeeperReadings = await getOntarioPlaceReading();
+  // const ontarioPlaceReading = await getLatestOntarioPlaceReading(waterKeeperReadings);
+  const cityOfTorontoReadings = await getLatestTorontoReadings();
+  const formattedCityOfTorontoResult = Object.values(cityOfTorontoReadings[0].beachReadings);
+  const beaches = [...formattedCityOfTorontoResult];
   res.send(beaches);
 });
 

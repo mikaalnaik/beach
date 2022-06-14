@@ -1,7 +1,8 @@
 import { BeachIds } from '../../../consts/beachIds';
-import { getOntarioPlaceReading, insertOntarioPlaceReadings } from '../../backfill/ontario-place';
+import { insertOntarioPlaceReadings } from '../../ontario-place';
 import mongo from '../../../mongo';
 import { filterOutOntarioPlaceReadingsByDate } from './filter-out-ontario-place-readings-by-date';
+import { getOntarioPlaceReading } from '../../../utils/ontario-place/get-swim-drink-fish-data';
 
 
 export const importLatestOntarioPlaceReadings = async () => {

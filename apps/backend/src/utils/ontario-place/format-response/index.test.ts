@@ -34,6 +34,7 @@ describe('Format Ontario Place response point', () => {
       },
       beachId: 15,
       beachName: 'Ontario Place West Beach',
+      displayName: 'Ontario Place',
       collectionDate: Temporal.PlainDate.from('2021-12-09T13:45:00-05:00').toString(),
       providerId: 2,
       provider: 'Lake Ontario WaterKeeper',

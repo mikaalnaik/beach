@@ -1,4 +1,4 @@
-import { bothReadingTypes, justOntarioPlaceReadings, notOntarioPlaceReadings } from '../../../../__fixtures__/waterkeeper-response';
+import { bothReadingTypes, justOntarioPlaceReadings, notOntarioPlaceReadings } from 'fixtures/waterkeeper-response';
 import { filterOntarioPlaceReadings } from './filter-ontario-place-readings';
 
 
