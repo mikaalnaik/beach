@@ -7,15 +7,13 @@ import styles from './style.module.scss';
 
 import type { Beach } from 'src/types/beaches';
 import Head from 'next/head';
+import { HeavyRainFallAdvisory } from 'src/data/advisories';
 
 export async function getStaticProps() {
-  console.log('this is the getStaticProps');
   let beaches = {};
   try {
 
-    console.log('yeah', `${endpoint}/beaches/latest`);
     const beachResponse = await fetch(`${endpoint}/beaches/latest`);
-    console.log('beachResponse', beachResponse);
     beaches = await beachResponse.json();
   } catch (error) {
     console.log('error', error);
@@ -34,6 +32,7 @@ interface Props {
 }
 
 export default function Home({ beaches }: Props) {
+  const hasAdvisory = beaches.some(beach => beach.advisory === HeavyRainFallAdvisory);
 
   const beachCards = beaches.map((beach, index) => (
     <BeachCard beach={beach} key={index} />
@@ -52,6 +51,11 @@ export default function Home({ beaches }: Props) {
         <p>
           E. coli measurements are per 100 ml of water.
         </p>
+        {hasAdvisory && (
+          <p>
+            {HeavyRainFallAdvisory}
+          </p>
+        )}
         <div className={styles['beach-list']}>
           {beachCards}
         </div>
