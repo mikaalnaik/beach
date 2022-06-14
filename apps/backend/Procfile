@@ -1,1 +1,1 @@
-web: node dist/src/index.js
+web: cd apps/backend && node dist/src/index.js
