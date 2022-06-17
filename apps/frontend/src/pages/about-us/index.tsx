@@ -22,8 +22,7 @@ export default function AboutUs() {
         <section>
           <h1>How can I get involved?</h1>
           <p className={styles.component}>
-            We run the project almost free, so we'll never ask for money or
-            anything like that.
+            We run the project almost free, so we'll never ask for money.
           </p>
           <p>
             What we do need is <b>you!</b> Your thoughts, opinions, feedback,
