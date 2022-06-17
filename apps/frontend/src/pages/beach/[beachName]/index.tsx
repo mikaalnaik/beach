@@ -3,8 +3,8 @@ import { ParticlesAnimation } from 'src/components/beach-card/particle';
 import { getBeachConstants } from 'src/utils/beachPositions';
 import beachRouteMatch from 'src/utils/beachRouteMatch';
 import fetch from 'node-fetch';
+import { getLastReportingDateFromToronto } from 'src/utils/beaches/toronto-beaches';
 import styles from './style.module.scss';
-import { endpoint } from 'src/data/endpoints';
 
 export async function getStaticPaths() {
   return {
@@ -16,8 +16,11 @@ export async function getStaticPaths() {
 }
 
 const getBeachData = async (id: number) => {
-  const r = await fetch(`${endpoint}/beaches/${id}`);
-  return await r.json();
+  const startDate = await getLastReportingDateFromToronto();
+
+  const r = await fetch(`https://secure.toronto.ca/opendata/adv/beach_results/v1?format=json&startDate=${startDate}&endDate=${startDate}&beachId=${id}`);
+  const rawData = await r.json();
+  return rawData;
 };
 
 export async function getStaticProps({ params }) {
@@ -39,13 +42,15 @@ export async function getStaticProps({ params }) {
 }
 
 export default function BeachPage({ beachData }) {
-
   return (
     <div className={styles.component}>
       <section className={styles.content}>
         <h1>
           {beachData?.name}
         </h1>
+        <h4>
+          {beachData?.reading[0].data[0].eColi || '?'} E. coli
+        </h4>
       </section>
       <div className={styles.particle}>
         <ParticlesAnimation ecoli={beachData?.reading.eColi} />

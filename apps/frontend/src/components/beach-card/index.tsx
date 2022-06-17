@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Beach } from 'src/types/beaches';
 import styles from './style.module.scss';
@@ -5,7 +6,6 @@ import { ParticlesAnimation } from './particle';
 import BeachInfoSection from './beach-info-section';
 import VisibilitySensor from 'react-visibility-sensor';
 import { getBeachConstants } from 'src/utils/beachPositions';
-import { useState } from 'react';
 
 interface Props {
   beach: Beach;

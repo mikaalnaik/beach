@@ -8,17 +8,24 @@ import styles from './style.module.scss';
 import type { Beach } from 'src/types/beaches';
 import Head from 'next/head';
 import { HeavyRainFallAdvisory } from 'src/data/advisories';
+import formatBackfill, { getLastReportingDateFromToronto } from 'src/utils/beaches/toronto-beaches';
 
 export async function getStaticProps() {
   let beaches = {};
   try {
 
-    const beachResponse = await fetch(`${endpoint}/beaches/latest`);
+    const startDate = await getLastReportingDateFromToronto();
+
+    const beachResponse = await fetch(
+      `https://secure.toronto.ca/opendata/adv/beach_results/v1?format=json&startDate=${startDate}&endDate=${startDate}`
+    );
     beaches = await beachResponse.json();
+    beaches = Object.values(formatBackfill(beaches)[0].beachReadings);
   } catch (error) {
     console.log('error', error);
   }
 
+  console.log('beaches', beaches);
   return {
     props: {
       beaches,
@@ -32,6 +39,7 @@ interface Props {
 }
 
 export default function Home({ beaches }: Props) {
+  console.log('beaches', beaches);
   const hasAdvisory = beaches.some(beach => beach.advisory === HeavyRainFallAdvisory);
 
   const beachCards = beaches.map((beach, index) => (
