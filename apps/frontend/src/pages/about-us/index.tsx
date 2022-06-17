@@ -16,7 +16,7 @@ export default function AboutUs() {
         <section>
           <h1>Have a great idea? A comment? A suggestion?</h1>
           <p className={styles.component}>
-            We'd love to hear it! Send us an email here.
+            We'd love to hear it! Send us an email <a href="mailto:matthewnaik@gmail.com">here</a>.
           </p>
         </section>
         <section>
