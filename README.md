@@ -6,4 +6,4 @@
 - Re-imagine backend
 - Reintroduce ML/predictions to the app
 - historical readings display
-
+- Semver
