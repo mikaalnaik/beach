@@ -1,7 +1,7 @@
 import { waterKeeper2021Resposne } from 'fixtures/water-keeper-2021';
-import { filterOntarioPlaceReadings } from '../../../../backfill/ontario-place/filter-ontario-place-readings';
-import { formatOntarioPlaceReading } from '../../../../backfill/ontario-place/format-response';
-import { filterOutOntarioPlaceReadingsByDate } from '..';
+import { formatOntarioPlaceReading } from '../../../../ontario-place/format-response';
+import { filterOntarioPlaceReadings } from '../../../../../utils/ontario-place/filter-ontario-place-readings';
+import { filterOutOntarioPlaceReadingsByDate } from '../index';
 
 describe('Filter Out Ontario Place Readings by Date', () => {
   it('only collects readings after the specififed date', () => {

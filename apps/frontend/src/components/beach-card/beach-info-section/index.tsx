@@ -14,16 +14,16 @@ interface Props {
 }
 
 const BeachInfoSection = ({ beach }: Props) => {
-  const {  collectionDate, beachId } = beach;
-  const beachDisplayName = beachPositions(Number(beachId)).displayName;
+  const {  collectionDate, beachId, statusFlag } = beach;
+  const beachDisplayName = beachPositions(Number(beachId))?.displayName || 'howdy';
   const sourceName = Number(beach.beachId) === 12 ? 'Swim Drink Fish' : 'City of Toronto';
   const prediction = undefined;
 
   return (
     <div className={styles['beachcard-content']}>
       <section className={styles.row}>
-        <BeachStatus eColi={beach.eColi} />
-        <div className={styles.title}>
+        <BeachStatus eColi={beach.eColi} statusFlag={statusFlag} />
+        <div className={styles.title}>  
           {beachDisplayName}
         </div>
       </section>
@@ -35,7 +35,7 @@ const BeachInfoSection = ({ beach }: Props) => {
               {sourceName}
             </div>
             <div className={styles['collection-date']}>
-              {dayjs(dayjs(collectionDate).endOf('day')).fromNow()}
+              {dayjs(collectionDate).fromNow()}
             </div>
           </div>
         </section>

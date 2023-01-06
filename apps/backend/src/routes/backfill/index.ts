@@ -1,8 +1,9 @@
 import express from 'express';
 import mongo from '../../mongo';
 import { backfillWeather } from '../../utils/backfill/weather';
-import { getOntarioPlaceReading, insertOntarioPlaceReadings } from '../../utils/backfill/ontario-place';
+import { insertOntarioPlaceReadings } from '../../utils/ontario-place';
 import { getTorontoReadings } from '../../data/toronto-beaches';
+import { getOntarioPlaceReading } from '../../utils/ontario-place/get-swim-drink-fish-data';
 
 const router = express.Router();
 //Middle ware that is specific to this router
