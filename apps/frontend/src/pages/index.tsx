@@ -12,8 +12,8 @@ import { HeavyRainFallAdvisory } from 'src/data/advisories';
 export async function getStaticProps() {
   let beaches = {};
   try {
-    const beachResponse = await fetch(`${endpoint}/beaches/latest`);
-    beaches = await beachResponse.json();
+    // const beachResponse = await fetch(`${endpoint}/beaches/latest`);
+    beaches = [];// await beachResponse.json();
   } catch (error) {
     console.log('error', error);
   }

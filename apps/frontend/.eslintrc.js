@@ -1,9 +1,7 @@
 module.exports = {
   root: true,
   parser: 'babel-eslint',
-  extends: [
-    'eslint:recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   ignorePatterns: [
     '.next',
     '.now',
@@ -23,7 +21,11 @@ module.exports = {
     quotes: ['error', 'single', { avoidEscape: true }],
     'arrow-parens': ['error', 'as-needed'],
     'array-bracket-spacing': ['error', 'never'],
-    'object-curly-spacing': ['error', 'always', { objectsInObjects: false, arraysInObjects: false }],
+    'object-curly-spacing': [
+      'error',
+      'always',
+      { objectsInObjects: false, arraysInObjects: false },
+    ],
     'quote-props': ['error', 'as-needed'],
     'keyword-spacing': 'error',
     'comma-spacing': ['error', { before: false, after: true }],

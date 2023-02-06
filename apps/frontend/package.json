@@ -26,7 +26,8 @@
     "sass": "^1.26.8",
     "three": "^0.139.0",
     "torontobeach": "^1.0.19",
-    "xml-js": "^1.6.11"
+    "xml-js": "^1.6.11",
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
