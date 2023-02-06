@@ -1,10 +1,10 @@
 import React from 'react';
 import { ParticlesAnimation } from 'src/components/beach-card/particle';
-import { getBeachConstants } from 'src/utils/beachPositions';
-import beachRouteMatch from 'src/utils/beachRouteMatch';
-import fetch from 'node-fetch';
+// import { getBeachConstants } from 'src/utils/beachPositions';
+// import beachRouteMatch from 'src/utils/beachRouteMatch';
+// import fetch from 'node-fetch';
 import styles from './style.module.scss';
-import { endpoint } from 'src/data/endpoints';
+// import { endpoint } from 'src/data/endpoints';
 
 export async function getStaticPaths() {
   return {
@@ -15,19 +15,19 @@ export async function getStaticPaths() {
   };
 }
 
-const getBeachData = async (id: number) => {
-  const r = await fetch(`${endpoint}/beaches/${id}`);
-  return await r.json();
-};
+// const getBeachData = async (id: number) => {
+//   const r = await fetch(`${endpoint}/beaches/${id}`);
+//   return await r.json();
+// };
 
-export async function getStaticProps({ params }) {
-  const beachID = beachRouteMatch(params.beachName);
-  const beachName = getBeachConstants(beachID).displayName;
-  const reading = await getBeachData(beachID);
+export async function getStaticProps() {
+  // const beachID = beachRouteMatch(params.beachName);
+  // const beachName = getBeachConstants(beachID).displayName;
+  // const reading = await getBeachData(beachID);
 
   const beachData = {
-    name: beachName,
-    reading,
+    name: 'Howdy Folks',
+    readin: {},
   };
 
   return {
@@ -48,7 +48,7 @@ export default function BeachPage({ beachData }) {
         </h1>
       </section>
       <div className={styles.particle}>
-        <ParticlesAnimation ecoli={beachData?.reading.eColi} />
+        <ParticlesAnimation ecoli={beachData?.reading?.eColi} />
       </div>
     </div>
   );

@@ -1,8 +1,6 @@
 import React from 'react';
 import BeachCard from '../components/beach-card';
 import Layout from 'src/components/layout';
-import fetch from 'node-fetch';
-import { endpoint } from 'src/data/endpoints';
 import styles from './style.module.scss';
 
 import type { Beach } from 'src/types/beaches';
