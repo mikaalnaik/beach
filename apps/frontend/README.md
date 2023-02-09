@@ -56,6 +56,10 @@ That's it!
 Now start using it with the functions and documentation below.
 
 
+### Research Papers of Notes
+
+Niagara and Toronto Predictions(https://www.mdpi.com/1660-4601/18/23/12841)
+
 
 
 &nbsp;
