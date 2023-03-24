@@ -2,9 +2,9 @@
 
 import dayjs from 'dayjs';
 import { PrismaClient } from '@prisma/client'
-import { fetchFromNOAA } from 'src/utils/weather/noaa';
+// import { fetchFromNOAA } from 'src/utils/weather/noaa';
 import fetch from 'node-fetch';
-const prisma = new PrismaClient()
+// const prisma = new PrismaClient()
 
 export default async function handler(_, res) {
   const waterData = await getWaterLevelData()
@@ -24,15 +24,15 @@ export default async function handler(_, res) {
   }
 }
 
-const getDate = () => {
-  const rangeBackInTime = 20;
-  const endDate = dayjs().format('YYYY-MM-DD')
-  const startDate = dayjs().subtract(rangeBackInTime, 'day').format('YYYY-MM-DD')
-  return {
-    startDate,
-    endDate,
-  }
-}
+// const getDate = () => {
+//   const rangeBackInTime = 20;
+//   const endDate = dayjs().format('YYYY-MM-DD')
+//   const startDate = dayjs().subtract(rangeBackInTime, 'day').format('YYYY-MM-DD')
+//   return {
+//     startDate,
+//     endDate,
+//   }
+// }
 
 const getWaterLevelData = async () => {
   const REPORTING_STATION = '02HC024'

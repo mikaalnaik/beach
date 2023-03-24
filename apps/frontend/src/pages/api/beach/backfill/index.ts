@@ -16,37 +16,37 @@ export const config = {
 //   });
 // };
 
-export default async function handler(_: NextRequest, res: NextResponse) {
+export default async function handler(_: NextRequest, __: NextResponse) {
 
-  const startDate = '2016-01-01'
-  const endDate = '2022-12-31';
+  // const startDate = '2016-01-01'
+  // const endDate = '2022-12-31';
 
-  const arrayOfBeachReadings = results.reduce((accum, dailyReadings) => {
-    if (dailyReadings.data) {
-      const date = dayjs(dailyReadings.CollectionDate).toDate();
-      const readings = dailyReadings.data.map(reading => {
-        delete reading.beachName;
-        return {
-          ...reading,
-          date: date,
-        }
-      })
-      return [...accum, ...readings];
-    } else {
-      return accum;
-    }
-  }, [])
-  console.log({ arrayOfBeachReadings });
+  // const arrayOfBeachReadings = results.reduce((accum, dailyReadings) => {
+  //   if (dailyReadings.data) {
+  //     const date = dayjs(dailyReadings.CollectionDate).toDate();
+  //     const readings = dailyReadings.data.map(reading => {
+  //       delete reading.beachName;
+  //       return {
+  //         ...reading,
+  //         date: date,
+  //       }
+  //     })
+  //     return [...accum, ...readings];
+  //   } else {
+  //     return accum;
+  //   }
+  // }, [])
+  // console.log({ arrayOfBeachReadings });
 
-  await prisma.beachReading.createMany({
-    data: arrayOfBeachReadings,
-    skipDuplicates: true,
-  }).then(data => {
-    NextResponse.json({ inserts: data, success: true, })
+  // await prisma.beachReading.createMany({
+  //   data: arrayOfBeachReadings,
+  //   skipDuplicates: true,
+  // }).then(data => {
+  //   NextResponse.json({ inserts: data, success: true, })
 
-  }).catch(err => {
-    console.error('Beach Reading Create Many Error', err);
-    NextResponse.json({ success: false, error: true, message: err })
-  })
+  // }).catch(err => {
+  //   console.error('Beach Reading Create Many Error', err);
+  //   NextResponse.json({ success: false, error: true, message: err })
+  // })
 
 }
