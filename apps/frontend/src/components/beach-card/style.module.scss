@@ -19,7 +19,7 @@
 .readingGroup {
   display: flex;
   flex-direction: column;
-
+  margin-top: -.75rem;
   @include desktop {
     margin-top: -2rem;
   }

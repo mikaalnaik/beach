@@ -24,14 +24,14 @@ const HomePageHeader = () => {
         <Link href="/" className={styles.title}>
           Toronto Beach Report
         </Link>
-        <div className={styles.links}>
+        {/* <div className={styles.links}>
           <Link href="/ecoli" className={styles.link}>
             About the readings
           </Link>
           <Link href="/about-us" className={styles.link}>
             About the project
           </Link>
-        </div>
+        </div> */}
       </nav>
     </>
   );
