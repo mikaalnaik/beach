@@ -46,21 +46,6 @@ const BeachCard = ({ beach }: Props) => {
         {beachIDToName(beach?.beachId)}
       </span>
       <section className={styles.readingGroup}>
-        {beach.prediction && (
-          <span className={styles.result}>
-            <div className={`${styles.reading} ${styles[getColorFlag(prediction)]}`}>
-              {prediction}
-            </div>
-            <span className={styles.superScript}>
-              <div className={styles.unit}>
-                E. coli ppm
-              </div>
-              <div className={`${styles.time}`}>
-                Predicted today
-              </div>
-            </span>
-          </span>
-        )}
 
 
         <span className={styles.result}>
@@ -77,6 +62,22 @@ const BeachCard = ({ beach }: Props) => {
           </span>
         </span>
       </section>
+      {beach.prediction && (
+        <span className={`${styles.result} ${styles.prediction}`}>
+          <div className={`${styles.reading} ${styles[getColorFlag(prediction)]}`}>
+            {prediction}
+          </div>
+          <span className={styles.superScript}>
+            <div className={styles.unit}>
+              E. coli ppm
+            </div>
+            <div className={`${styles.time}`}>
+              Predicted today
+            </div>
+          </span>
+        </span>
+      )}
+
     </div>
   );
 };

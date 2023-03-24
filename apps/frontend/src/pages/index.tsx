@@ -9,6 +9,8 @@ import { HeavyRainFallAdvisory } from 'src/data/advisories';
 import { getLastTorontoBeachUpdate } from 'src/utils/beaches/get-latest';
 import { getTorontoReadings } from 'src/utils/beaches/get-beaches';
 
+const testMode = false;
+
 export async function getStaticProps() {
   let beachData = []
   try {
@@ -20,7 +22,7 @@ export async function getStaticProps() {
       return {
         ...reading,
         collectionDate,
-        // prediction: Math.round(Math.random() * (175 - 0)),
+        prediction: testMode && Math.round(Math.random() * (175 - 0)),
       }
     })
   } catch (error) {
