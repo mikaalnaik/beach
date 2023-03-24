@@ -26,13 +26,17 @@ const BeachCard = ({ beach }: Props) => {
 
   const label = eColi ? eColi : 'N/A'
 
-  const getColorFlag = (value: number): 'safe' | 'unsafe' => {
+  const getColorFlag = (value: number): 'safe' | 'unsafe' | 'default' | string => {
+    if (value === null) {
+      return 'default'
+    }
+    console.log({ value });
     if (value < 100) {
       return 'safe'
-    } else {
+    } else if (value > 99) {
       return 'unsafe'
     }
-
+    return ''
   }
 
 

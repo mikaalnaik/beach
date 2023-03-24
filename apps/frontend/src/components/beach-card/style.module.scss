@@ -53,6 +53,7 @@
 .reading {
   vertical-align: top;
   font-size: 4rem;
+  color: grey;
 
   @include desktop {
     font-size: 10rem;
