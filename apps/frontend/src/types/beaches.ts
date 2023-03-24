@@ -11,4 +11,5 @@ export type BeachAdvisory = string;
 
 export interface Beach extends RawBeach {
   collectionDate: Date;
+  prediction?: any; // dont hate me
 }

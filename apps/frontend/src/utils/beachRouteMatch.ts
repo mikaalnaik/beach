@@ -34,3 +34,21 @@ export function beachIDToRouteName(id) {
   };
   return beachNamesHash[id];
 }
+const beachNames = {
+  1: 'Marie Curtis',
+  2: 'Sunnyside',
+  3: 'Hanlan\'s Point',
+  4: 'Gibraltar Point',
+  5: 'Centre Island',
+  6: 'Ward\'s Island',
+  7: 'Cherry',
+  8: 'Woodbine',
+  9: 'Kew-Balmy',
+  10: 'Bluffer\'s Park',
+  11: 'Rouge',
+  15: 'Ontario Place'
+};
+
+export function beachIDToName(id: number) {
+  return beachNames[id];
+}

@@ -6,19 +6,29 @@ import styles from './style.module.scss';
 import type { Beach } from 'src/types/beaches';
 import Head from 'next/head';
 import { HeavyRainFallAdvisory } from 'src/data/advisories';
+import { getLastTorontoBeachUpdate } from 'src/utils/beaches/get-latest';
+import { getTorontoReadings } from 'src/utils/beaches/get-beaches';
 
 export async function getStaticProps() {
-  let beaches = {};
+  let beachData = []
   try {
-    // const beachResponse = await fetch(`${endpoint}/beaches/latest`);
-    beaches = [];// await beachResponse.json();
+    const lastUpdate = await getLastTorontoBeachUpdate()
+    const readings = await getTorontoReadings(lastUpdate, lastUpdate)
+
+    const collectionDate = readings[0].CollectionDate;
+    beachData = readings[0].data.map(reading => {
+      return {
+        ...reading,
+        collectionDate
+      }
+    })
   } catch (error) {
     console.log('error', error);
   }
 
   return {
     props: {
-      beaches,
+      beaches: beachData,
     },
     revalidate: 3600, // In seconds
   };
@@ -53,7 +63,7 @@ export default function Home({ beaches }: Props) {
         ></meta>
       </Head>
       <section className={styles.description}>
-        <p>E. coli measurements are per 100 ml of water.</p>
+        {/* <p>E. coli measurements are per 100 ml of water.</p> */}
         {hasAdvisory && <p>{HeavyRainFallAdvisory}</p>}
         <div className={styles['beach-list']}>{beachCards}</div>
       </section>

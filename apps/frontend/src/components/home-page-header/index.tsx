@@ -6,24 +6,16 @@ import styles from './style.module.scss';
 const HomePageHeader = () => {
   return (
     <nav className={styles['title-section']}>
-      <h1>
-        <Link href="/">
-          <a className={styles.title}>
-            Toronto Beach Report
-          </a>
-        </Link>
-      </h1>
-      <div>
-        <Link href="/ecoli">
-          <a>
-          What do these readings mean?
-          </a>
-        </Link>
-        <Link href="/about-us">
-          <a>
-           About the project
-          </a>
-        </Link>
+      <Link href="/" className={styles.title}>
+        Toronto Beach Report
+      </Link>
+      <div className={styles.links}>
+        {/* <Link href="/ecoli" className={styles.link}>
+          About readings
+        </Link> */}
+        {/* <Link href="/about-us" className={styles.link}>
+          About the project
+        </Link> */}
       </div>
     </nav>
   );

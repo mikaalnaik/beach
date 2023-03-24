@@ -3,27 +3,61 @@
 .beachcard {
   border-radius: 4px;
   width: 100%;
-  position: relative;
-  height: 500px;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.11),
-            0 2px 2px rgba(0,0,0,0.11),
-            0 4px 4px rgba(0,0,0,0.11),
-            0 8px 8px rgba(0,0,0,0.11),
-            0 16px 16px rgba(0,0,0,0.11),
-            0 32px 32px rgba(0,0,0,0.11);
+  font-weight: 600;
+  font-size: 4rem;
+  // width: 100vw;
+  word-wrap: break-word;
+  
+  @include desktop {
+    font-size: 10rem;
+
+  }
 }
 
-.image-wrapper {
-  background-color: rgb(28, 31, 58);
-  position: absolute;
-  border-radius: 4px;
-  height: 100%;
-  width: 100%;
+.readingGroup {
+  display: flex;
+  flex-direction: column;
 }
 
-.image {
-  width: 100%;
-  object-fit: contain;
-  border-top-left-radius: $border-radius;
-  border-top-right-radius: $border-radius;
+.result {
+  display: flex;
+  align-items: start;
+  // height: 50px;
+  // line-height: 100px;
+  vertical-align: text-top;
+}
+
+.subText {
+}
+
+.unit {
+  font-size: 10px;
+  margin-top: 10px;
+  
+  @include desktop {
+    font-size: 16px;
+    margin-top: 16px;
+  }
+}
+
+.superScript {
+  margin-left: 5px;
+}
+
+.reading {
+  vertical-align: top;
+
+  &.safe {
+    color: #5d9c59;
+  }
+
+  &.unsafe {
+    color: #df2e38;
+  }
+}
+
+
+.time {
+  color: grey;
+  font-size: 9px;
 }

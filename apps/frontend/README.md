@@ -62,6 +62,13 @@ Niagara and Toronto Predictions(https://www.mdpi.com/1660-4601/18/23/12841)
 
 
 
+### Data Sources
+
+https://wateroffice.ec.gc.ca/services/historical_graph/json/inline?station=02HC024&data_type=daily&year=2020&start_year=1850&end_year=2023&start_month=01&end_month=12&results_type=historical&parameter_type=level
+
+https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=CA006158355&startDate=2023-02-01&endDate=2023-02-07&includeAttributes=true&format=json&units=metric
+
+
 &nbsp;
 
 
