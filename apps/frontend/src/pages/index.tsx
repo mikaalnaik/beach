@@ -49,19 +49,7 @@ export default function Home({ beaches }: Props) {
 
   return (
     <Layout>
-      <Head>
-        <title>Toronto Beach Report</title>
-        <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <meta
-          name='keywords'
-          content='toronto beaches, water quality, beach ecoli'
-        />
-        <meta
-          name='description'
-          content="The easiest way to access information about Toronto's beaches e.Coli levels and safety standards"
-        ></meta>
-      </Head>
+
       <section className={styles.description}>
         {/* <p>E. coli measurements are per 100 ml of water.</p> */}
         {hasAdvisory && <p>{HeavyRainFallAdvisory}</p>}

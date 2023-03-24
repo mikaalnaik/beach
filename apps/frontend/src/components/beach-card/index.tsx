@@ -40,7 +40,7 @@ const BeachCard = ({ beach }: Props) => {
             </div>
             <span className={styles.superScript}>
               <div className={styles.unit}>
-                ppm E. coli
+                E. coli ppm
               </div>
               <div className={`${styles.time}`}>
                 Predicted today
@@ -56,7 +56,7 @@ const BeachCard = ({ beach }: Props) => {
           </div>
           <span className={styles.superScript}>
             <div className={styles.unit}>
-              ppm E. coli
+              E. coli ppm
             </div>
             <div className={`${styles.time}`}>
               {dayjs(beach.collectionDate).fromNow()}

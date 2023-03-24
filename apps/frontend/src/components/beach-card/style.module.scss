@@ -17,6 +17,10 @@
 .readingGroup {
   display: flex;
   flex-direction: column;
+  
+  @include desktop {
+    margin-top: -2rem;
+  }
 }
 
 .result {
@@ -36,7 +40,7 @@
   
   @include desktop {
     font-size: 16px;
-    margin-top: 16px;
+    margin-top: 32px;
   }
 }
 
