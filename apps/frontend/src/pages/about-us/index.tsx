@@ -40,12 +40,12 @@ export default function AboutUs() {
           </p>
         </section>
         <section className={styles.contributors}>
-          <h1>Contributors</h1>
+          <h1>Thanks to:</h1>
           <p className={styles.component}>
             This project wouldn't exist with the help of these people.
           </p>
           <ul>
-            <li>Mikaal Naik</li>
+            <li>Great Lakes Observation System</li>
             <li>Steve Shearer</li>
             <li>Norman Chan</li>
           </ul>

@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-unfetch';
 import { WaterKeeperResponse } from 'types/waterkeeper-response';
 import { filterOntarioPlaceReadings } from './filter-ontario-place-readings';
 import { formatOntarioPlaceReading } from './format-response';

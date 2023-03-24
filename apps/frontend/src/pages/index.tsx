@@ -19,7 +19,8 @@ export async function getStaticProps() {
     beachData = readings[0].data.map(reading => {
       return {
         ...reading,
-        collectionDate
+        collectionDate,
+        // prediction: Math.round(Math.random() * (175 - 0)),
       }
     })
   } catch (error) {
@@ -39,9 +40,9 @@ interface Props {
 }
 
 export default function Home({ beaches }: Props) {
-  const hasAdvisory = beaches.some(
-    beach => beach.advisory === HeavyRainFallAdvisory
-  );
+  // const hasAdvisory = beaches.some(
+  //   beach => beach.advisory === HeavyRainFallAdvisory
+  // );
 
   const beachCards = beaches.map((beach, index) => (
     <BeachCard beach={beach} key={index} />
@@ -52,7 +53,7 @@ export default function Home({ beaches }: Props) {
 
       <section className={styles.description}>
         {/* <p>E. coli measurements are per 100 ml of water.</p> */}
-        {hasAdvisory && <p>{HeavyRainFallAdvisory}</p>}
+        {/* {hasAdvisory && <p>{HeavyRainFallAdvisory}</p>} */}
         <div className={styles['beach-list']}>{beachCards}</div>
       </section>
     </Layout>

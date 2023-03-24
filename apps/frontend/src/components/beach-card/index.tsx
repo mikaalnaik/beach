@@ -12,7 +12,7 @@ interface Props {
 }
 
 const BeachCard = ({ beach }: Props) => {
-  const { eColi } = beach;
+  const { eColi, prediction } = beach;
   // const router = useRouter();
 
   const handleClick = () => {
@@ -25,7 +25,16 @@ const BeachCard = ({ beach }: Props) => {
   };
 
   const label = eColi ? eColi : 'N/A'
-  const colourFlag = eColi < 100 ? 'safe' : 'unsafe'
+
+  const getColorFlag = (value: number): 'safe' | 'unsafe' => {
+    if (value < 100) {
+      return 'safe'
+    } else {
+      return 'unsafe'
+    }
+
+  }
+
 
   return (
     <div className={styles['beachcard']} onClick={handleClick}>
@@ -35,8 +44,8 @@ const BeachCard = ({ beach }: Props) => {
       <section className={styles.readingGroup}>
         {beach.prediction && (
           <span className={styles.result}>
-            <div className={`${styles.reading} ${styles[colourFlag]}`}>
-              {label}
+            <div className={`${styles.reading} ${styles[getColorFlag(prediction)]}`}>
+              {prediction}
             </div>
             <span className={styles.superScript}>
               <div className={styles.unit}>
@@ -51,7 +60,7 @@ const BeachCard = ({ beach }: Props) => {
 
 
         <span className={styles.result}>
-          <div className={`${styles.reading} ${styles[colourFlag]}`}>
+          <div className={`${styles.reading} ${styles[getColorFlag(eColi)]}`}>
             {label}
           </div>
           <span className={styles.superScript}>

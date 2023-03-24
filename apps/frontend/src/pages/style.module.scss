@@ -11,6 +11,7 @@
     grid-template-columns: 1fr 1fr;
   }
   @include desktop {
+    padding: 4rem;
     grid-gap: 4rem;
     // grid-template-columns: 1fr 1fr 1fr;
   }

@@ -4,20 +4,22 @@
   border-radius: 4px;
   width: 100%;
   font-weight: 600;
-  font-size: 4rem;
-  // width: 100vw;
   word-wrap: break-word;
-  
+}
+
+.beachName {
+  line-height: 3.5rem;
+  font-size: 4rem;
+
   @include desktop {
     font-size: 10rem;
-
   }
 }
 
 .readingGroup {
   display: flex;
   flex-direction: column;
-  
+
   @include desktop {
     margin-top: -2rem;
   }
@@ -36,20 +38,25 @@
 
 .unit {
   font-size: 10px;
-  margin-top: 10px;
-  
-  @include desktop {
-    font-size: 16px;
-    margin-top: 32px;
-  }
 }
 
 .superScript {
   margin-left: 5px;
+  margin-top: 12.5px;
+
+  @include desktop {
+    font-size: 16px;
+    margin-top: 35px;
+  }
 }
 
 .reading {
   vertical-align: top;
+  font-size: 4rem;
+
+  @include desktop {
+    font-size: 10rem;
+  }
 
   &.safe {
     color: #5d9c59;
@@ -59,7 +66,6 @@
     color: #df2e38;
   }
 }
-
 
 .time {
   color: grey;
