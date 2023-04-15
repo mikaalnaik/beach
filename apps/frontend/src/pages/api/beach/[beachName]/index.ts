@@ -8,7 +8,11 @@ import { daysAgo } from 'src/utils/time';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const lastUpdate = await getLastTorontoBeachUpdate()
   const readings = await getTorontoReadings(lastUpdate, lastUpdate)
-  const beachName  = req.query.beachName as string
+  const beachName  = req.query.beachName?.toString().toLowerCase() 
+
+  if (!beachName) {
+    return res.status(400).send({ error: 'Missing beach name' })
+  }
 
   const beachID = beachNameToID(beachName)
 
