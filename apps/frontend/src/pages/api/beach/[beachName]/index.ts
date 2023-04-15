@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { beachNameToID } from 'src/utils/beachRouteMatch';
 import { getTorontoReadings } from 'src/utils/beaches/get-beaches';
 import { getLastTorontoBeachUpdate } from 'src/utils/beaches/get-latest';
 import { daysAgo } from 'src/utils/time';
@@ -7,7 +8,11 @@ import { daysAgo } from 'src/utils/time';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const lastUpdate = await getLastTorontoBeachUpdate()
   const readings = await getTorontoReadings(lastUpdate, lastUpdate)
-  const beachID  = Number(req.query.beachID)
+  const beachName  = req.query.beachName as string
+
+  const beachID = beachNameToID(beachName)
+
+  console.log({ beachName, beachID});
 
   const collectionDate = readings[0].CollectionDate;
   const beachData = readings[0].data.reduce((accum: Record<string, unknown>, reading: Record<string, unknown>) => {

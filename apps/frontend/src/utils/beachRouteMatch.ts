@@ -49,6 +49,24 @@ const beachNames = {
   15: 'Ontario Place'
 };
 
+// Use to parse the value from the Voiceflow assistant
+const beachNamesToID = {
+  'marie curtis': 1,
+  'sunnyside': 2,
+  'hanlans': 3,
+  'gibraltar': 4,
+  'centre': 5,
+  'wards': 6,
+  'cherry': 7,
+  'woodbine': 8,
+  'kew balmy': 9,
+  'bluffer': 10,
+}
+
+export function beachNameToID(beachName: string) {
+  return beachNamesToID[beachName];
+}
+
 export function beachIDToName(id: number) {
   return beachNames[id];
 }
