@@ -42,10 +42,6 @@ interface Props {
 }
 
 export default function Home({ beaches }: Props) {
-  // const hasAdvisory = beaches.some(
-  //   beach => beach.advisory === HeavyRainFallAdvisory
-  // );
-
   const beachCards = beaches.map((beach, index) => (
     <BeachCard beach={beach} key={index} />
   ));
@@ -54,8 +50,6 @@ export default function Home({ beaches }: Props) {
     <Layout>
 
       <section className={styles.description}>
-        {/* <p>E. coli measurements are per 100 ml of water.</p> */}
-        {/* {hasAdvisory && <p>{HeavyRainFallAdvisory}</p>} */}
         <div className={styles['beach-list']}>{beachCards}</div>
       </section>
     </Layout>

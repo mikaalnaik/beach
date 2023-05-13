@@ -9,8 +9,17 @@ const START_OF_TORONTO_RECORDS = '2007-01-01';
 
 export default async function handler(_: NextApiRequest, res: NextApiResponse) {
 
-  const startDate = START_OF_TORONTO_RECORDS;
+  // yesterday
+  const startDate = dayjs().subtract(1, 'day').format('YYYY-MM-DD');
   const endDate = dayjs().format('YYYY-MM-DD');
+
+
+  // check if there is a reading for yesterday
+  const yesterdayReading = await (await sql`SELECT * FROM beach_readings WHERE date = ${startDate};`).rows
+  if (yesterdayReading.length) {
+    res.status(200).json({ message: 'Already have a reading for today', yesterdayReading });
+    return;
+  }
 
   const results = await getTorontoReadings(startDate, endDate)
   const arrayOfBeachReadings = results.reduce((accum, dailyReadings) => {
@@ -29,9 +38,9 @@ export default async function handler(_: NextApiRequest, res: NextApiResponse) {
     }
   }, [])
 
-  const inserts = await arrayOfBeachReadings.map(async reading => {
+  const inserts = arrayOfBeachReadings.map(async reading => {
     try {
-      return await sql`INSERT INTO beach_readings (beach_id, e_coli, advisory, status_flag, status_flag_pre, date) VALUES (${reading.beachId}, ${reading.eColi}, ${reading.advisory}, ${reading.statusFlag}, ${reading.statusFlagPre}, ${reading.date});`;
+      return sql`INSERT INTO beach_readings (beach_id, e_coli, advisory, status_flag, status_flag_pre, date) VALUES (${reading.beachId}, ${reading.eColi}, ${reading.advisory}, ${reading.statusFlag}, ${reading.statusFlagPre}, ${reading.date});`;
     } catch (error) {
       console.error('Error inserting reading', error);
       return error;
