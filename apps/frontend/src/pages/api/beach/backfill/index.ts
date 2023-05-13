@@ -1,52 +1,44 @@
 import dayjs from 'dayjs';
-import fetch from 'node-fetch';
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { getTorontoReadings } from 'src/utils/beaches/get-beaches';
+import { sql } from '@vercel/postgres';
 
-import { NextRequest, NextResponse } from 'next/server';
 
-export const config = {
-  runtime: 'edge', // this is a pre-requisite
-  // regions: ['iad1'], // only execute this function on iad1
-};
 
-// export default (req: NextRequest) => {
-//   return NextResponse.json({
-//     name: `Hello, from ${req.url} I'm now an Edge Function!`,
-//   });
-// };
+const START_OF_TORONTO_RECORDS = '2007-01-01';
 
-export default async function handler(_: NextRequest, __: NextResponse) {
+export default async function handler(_: NextApiRequest, res: NextApiResponse) {
 
-  // const startDate = '2016-01-01'
-  // const endDate = '2022-12-31';
+  const startDate = START_OF_TORONTO_RECORDS;
+  const endDate = dayjs().format('YYYY-MM-DD');
 
-  // const arrayOfBeachReadings = results.reduce((accum, dailyReadings) => {
-  //   if (dailyReadings.data) {
-  //     const date = dayjs(dailyReadings.CollectionDate).toDate();
-  //     const readings = dailyReadings.data.map(reading => {
-  //       delete reading.beachName;
-  //       return {
-  //         ...reading,
-  //         date: date,
-  //       }
-  //     })
-  //     return [...accum, ...readings];
-  //   } else {
-  //     return accum;
-  //   }
-  // }, [])
-  // console.log({ arrayOfBeachReadings });
+  const results = await getTorontoReadings(startDate, endDate)
+  const arrayOfBeachReadings = results.reduce((accum, dailyReadings) => {
+    if (dailyReadings.data) {
+      const date = dayjs(dailyReadings.CollectionDate).toDate();
+      const readings = dailyReadings.data.map(reading => {
+        delete reading.beachName;
+        return {
+          ...reading,
+          date: date,
+        }
+      })
+      return [...accum, ...readings];
+    } else {
+      return accum;
+    }
+  }, [])
 
-  // await prisma.beachReading.createMany({
-  //   data: arrayOfBeachReadings,
-  //   skipDuplicates: true,
-  // }).then(data => {
-  //   NextResponse.json({ inserts: data, success: true, })
+  const inserts = await arrayOfBeachReadings.map(async reading => {
+    try {
+      return await sql`INSERT INTO beach_readings (beach_id, e_coli, advisory, status_flag, status_flag_pre, date) VALUES (${reading.beachId}, ${reading.eColi}, ${reading.advisory}, ${reading.statusFlag}, ${reading.statusFlagPre}, ${reading.date});`;
+    } catch (error) {
+      console.error('Error inserting reading', error);
+      return error;
+    }
+  })
 
-  // }).catch(err => {
-  //   console.error('Beach Reading Create Many Error', err);
-  //   NextResponse.json({ success: false, error: true, message: err })
-  // })
+  const insertResults = await Promise.all(inserts)
 
+  res.status(200).json({ message: insertResults });
 }

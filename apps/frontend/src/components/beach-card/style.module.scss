@@ -20,8 +20,9 @@
   display: flex;
   flex-direction: column;
   margin-top: -.75rem;
+
   @include desktop {
-    margin-top: -2rem;
+    margin-top: -1rem;
   }
 }
 
@@ -33,8 +34,7 @@
   vertical-align: text-top;
 }
 
-.subText {
-}
+.subText {}
 
 .prediction {
   margin-top: -3.5rem;
