@@ -41,7 +41,7 @@
 }
 
 .unit {
-  font-size: 10px;
+  font-size: 1rem;
 }
 
 .superScript {
@@ -49,7 +49,7 @@
   margin-top: 12.5px;
 
   @include desktop {
-    font-size: 16px;
+    font-size: 2rem;
     margin-top: 35px;
   }
 }
@@ -74,5 +74,5 @@
 
 .time {
   color: grey;
-  font-size: 9px;
+  font-size: .75rem;
 }
