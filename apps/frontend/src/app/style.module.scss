@@ -1,19 +1,20 @@
 @import 'src/styles/imports';
 
 .beach-list {
+
   display: grid;
   grid-template-columns: 100%;
   padding: 1rem;
   gap: 2rem;
   margin-bottom: 3rem;
-  
+
   @include tablet {
     grid-template-columns: 1fr 1fr;
   }
+
   @include desktop {
     padding: 4rem;
     grid-gap: 4rem;
     // grid-template-columns: 1fr 1fr 1fr;
   }
 }
-

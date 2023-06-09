@@ -1,3 +1,4 @@
+'use client'
 // import { useRouter } from 'next/router';
 import { Beach } from 'src/types/beaches';
 import styles from './style.module.scss';

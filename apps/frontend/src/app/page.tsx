@@ -11,7 +11,33 @@ import { getTorontoReadings } from 'src/utils/beaches/get-beaches';
 
 const testMode = false;
 
-export async function getStaticProps() {
+// export async function getStaticProps() {
+//   let beachData = []
+//   try {
+//     const lastUpdate = await getLastTorontoBeachUpdate()
+//     const readings = await getTorontoReadings(lastUpdate, lastUpdate)
+
+//     const collectionDate = readings[0].CollectionDate;
+//     beachData = readings[0].data.map(reading => {
+//       return {
+//         ...reading,
+//         collectionDate,
+//         prediction: testMode && Math.round(Math.random() * (175 - 0)),
+//       }
+//     })
+//   } catch (error) {
+//     console.log('error', error);
+//   }
+
+//   return {
+//     props: {
+//       beaches: beachData,
+//     },
+//     revalidate: 3600, // In seconds
+//   };
+// }
+
+const getData = async () => {
   let beachData = []
   try {
     const lastUpdate = await getLastTorontoBeachUpdate()
@@ -30,10 +56,7 @@ export async function getStaticProps() {
   }
 
   return {
-    props: {
-      beaches: beachData,
-    },
-    revalidate: 3600, // In seconds
+    beaches: beachData,
   };
 }
 
@@ -41,7 +64,9 @@ interface Props {
   beaches: Beach[];
 }
 
-export default function Home({ beaches }: Props) {
+export default async function Home({ }: Props) {
+  const { beaches } = await getData()
+
   const beachCards = beaches.map((beach, index) => (
     <BeachCard beach={beach} key={index} />
   ));

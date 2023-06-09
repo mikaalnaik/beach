@@ -7,11 +7,14 @@ import { HistoricalChart } from 'src/components/HistoricalChart';
 
 
 const getData = async (beachID: number) => {
+  if (!beachID) {
+    return { rows: [] }
+  }
   const data = await sql`
     SELECT *
     FROM beach_readings
-    WHERE beach_id = ${beachID} AND date >= DATE_TRUNC('year', CURRENT_DATE - INTERVAL '5 years')
-    ORDER BY date DESC;
+    WHERE beach_id = ${beachID}
+    ORDER BY date ASC;
   `
   const rows = data.rows
   return { rows };
