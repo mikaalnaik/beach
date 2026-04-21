@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './style.module.scss';
 import { sql } from '@vercel/postgres';
 import { beachIDToName } from 'src/utils/beachRouteMatch';
-import { VictoryChart, VictoryLine } from 'victory'
 import { HistoricalChart } from 'src/components/HistoricalChart';
 
 
@@ -22,21 +21,18 @@ const getData = async (beachID: number) => {
 
 
 
-export default async function BeachPage({ params: { beachID } }) {
+export default async function BeachPage({ params: { beachID } }: { params: { beachID: number } }) {
   const data = await getData(beachID);
 
   const name = beachIDToName(beachID)
 
   const chartData = data.rows.map(entry => {
-    console.log({ entry });
     return {
       x: entry.date,
       y: entry.e_coli,
     }
   })
     .filter(entry => entry.y > 0)
-
-  console.log({ chartData });
 
   return (
     <div className={styles.component}>
@@ -47,7 +43,6 @@ export default async function BeachPage({ params: { beachID } }) {
       </section>
       <div className={styles.particle}>
         <HistoricalChart data={chartData} />
-        {/* <ParticlesAnimation ecoli={beachData?.reading?.eColi} /> */}
       </div>
     </div>
   );

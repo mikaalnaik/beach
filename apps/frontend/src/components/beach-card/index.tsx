@@ -1,5 +1,4 @@
 'use client'
-// import { useRouter } from 'next/router';
 import { Beach } from 'src/types/beaches';
 import styles from './style.module.scss';
 import { beachIDToName } from 'src/utils/beachRouteMatch';
@@ -14,16 +13,8 @@ interface Props {
 
 const BeachCard = ({ beach }: Props) => {
   const { eColi, prediction } = beach;
-  // const router = useRouter();
 
-  const handleClick = () => {
-    // Create specific page for Ontario Place beach
-    // if (beach.beachId === 12) {
-    //   return;
-    // } else {
-    //   router.push(`/beach/${getBeachConstants(beach.beachId).routeName}`);
-    // }
-  };
+  const handleClick = () => {};
 
   const label = eColi ? eColi : 'N/A'
 
@@ -31,7 +22,6 @@ const BeachCard = ({ beach }: Props) => {
     if (value === null) {
       return 'default'
     }
-    console.log({ value });
     if (value < 100) {
       return 'safe'
     } else if (value > 99) {

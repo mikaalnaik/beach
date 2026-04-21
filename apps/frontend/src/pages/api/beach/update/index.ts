@@ -42,7 +42,6 @@ export default async function handler(_: NextApiRequest, res: NextApiResponse) {
     try {
       return sql`INSERT INTO beach_readings (beach_id, e_coli, advisory, status_flag, status_flag_pre, date) VALUES (${reading.beachId}, ${reading.eColi}, ${reading.advisory}, ${reading.statusFlag}, ${reading.statusFlagPre}, ${reading.date});`;
     } catch (error) {
-      console.error('Error inserting reading', error);
       return error;
     }
   })
