@@ -1,21 +1,36 @@
 'use client'
 import dayjs from 'dayjs'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { VictoryAxis, VictoryChart, VictoryLine, VictoryTheme } from 'victory'
 
-export const HistoricalChart = ({ data }) => {
-  const initialData = data.map(entry => { return { x: entry.date, y: 0 } })
-  const [chartData, setChartData] = useState(initialData)
+interface DataPoint {
+  x: Date;
+  y: number;
+}
 
-  setTimeout(() => {
-    setChartData(data)
-  }, 500)
+export const HistoricalChart = ({ data }: { data: DataPoint[] }) => {
+  const initialData = data.map(entry => ({ x: entry.x, y: 0 }))
+  const [chartData, setChartData] = useState(initialData)
+  const [dimensions, setDimensions] = useState({ height: 0, width: 0 })
+
+  useEffect(() => {
+    setDimensions({
+      height: window.innerHeight / 1.5,
+      width: window.outerWidth,
+    })
+    const timer = setTimeout(() => {
+      setChartData(data)
+    }, 500)
+    return () => clearTimeout(timer)
+  }, [data])
+
+  if (!dimensions.width) return null
 
   return (
     <VictoryChart
       domainPadding={{ x: 25 }}
-      height={window.innerHeight / 1.5}
-      width={window.outerWidth}
+      height={dimensions.height}
+      width={dimensions.width}
       padding={{ top: 50, bottom: 50, right: 10, left: 10 }}
     >
       <VictoryLine
@@ -49,7 +64,6 @@ export const HistoricalChart = ({ data }) => {
         }}
         theme={VictoryTheme.material}
         offsetX={200}
-      // standalone={false}
       />
       <VictoryAxis
         tickCount={5}

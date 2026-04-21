@@ -7,17 +7,8 @@ export default async function handler(_, res) {
   const noaaData = await getNOAAData()
   try {
     res.send(noaaData)
-    // await prisma.weather.createMany({
-    //   data: noaaData,
-    //   skipDuplicates: true,
-    // }).then(data => {
-    //   res.send(data)
-    // }).catch(err => {
-    //   console.log({ err });
-    //   throw new Error(err)
-    // })
   } catch (err) {
-    res.send({ error: err, message: 'something went wrongt', })
+    res.send({ error: err, message: 'something went wrong', })
   }
 }
 
@@ -38,10 +29,6 @@ const getNOAAData = async () => {
 
   return weatherResponse.map(entry => {
     const { DATE, TMAX, TMIN, TAVG, PRCP } = entry;
-    console.log({
-      DATE,
-      entry
-    });
     return {
       precipitation: ~~PRCP,
       meanTemp: ~~TAVG,

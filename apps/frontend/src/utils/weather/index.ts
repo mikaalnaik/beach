@@ -10,10 +10,9 @@ export const getWeatherForDates = async () => {
   try {
 
     const weatherResponse = await fetch(`https://climate.weather.gc.ca/climate_data/bulk_data_e.html?format=xml&stationID=${stationID}&Year=${year}&time=&timeframe=2`);
-    const text = await weatherResponse.text();
-    console.log({ text });
-  } catch (err) {
-    console.log('err', err);
+    await weatherResponse.text();
+  } catch {
+    // fetch failed
   }
 
 

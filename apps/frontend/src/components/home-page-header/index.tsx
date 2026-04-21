@@ -8,7 +8,7 @@ const HomePageHeader = () => {
   return (
     <>
       <Head>
-        <title>Toronto Beach Report</title>
+        <title>The Toronto Beaches</title>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta
@@ -22,7 +22,7 @@ const HomePageHeader = () => {
       </Head>
       <nav className={styles['title-section']}>
         <Link href="/" className={styles.title}>
-          Toronto Beach Report
+          The Toronto Beaches
         </Link>
         {/* <div className={styles.links}>
           <Link href="/ecoli" className={styles.link}>
