@@ -8,9 +8,10 @@
   font-weight: 200;
   padding: 1rem;
   margin-bottom: 0;
+  border-bottom: 2px solid black;
 
   @include desktop {
-    padding: 4rem 4rem 0;
+    padding: 4rem 4rem 2rem;
   }
 }
 

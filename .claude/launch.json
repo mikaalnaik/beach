@@ -5,7 +5,9 @@
       "name": "Frontend (Next.js dev)",
       "runtimeExecutable": "yarn",
       "runtimeArgs": ["dev"],
-      "port": 3000
+      "cwd": "apps/frontend",
+      "port": 3000,
+      "autoPort": true
     }
   ]
 }
